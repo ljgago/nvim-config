@@ -24,7 +24,7 @@ end
 local colors = M.colors()
 
 vim.o.termguicolors = true
-vim.cmd('colorscheme onedark')
+vim.cmd('colorscheme onedark-night')
 
 vim.cmd('autocmd ColorScheme * hi StatusLine guifg=NONE ctermfg=NONE guibg=NONE ctermbg=NONE gui=NONE cterm=NONE')
 
