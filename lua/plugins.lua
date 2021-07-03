@@ -50,6 +50,9 @@ return require('packer').startup(function()
   use 'tpope/vim-fugitive'
   use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
 
+  -- Flutter
+  use {'akinsho/flutter-tools.nvim', requires = {'nvim-lua/plenary.nvim'}}
+
   -- Syntax Highlight
   use 'sheerun/vim-polyglot'
 
