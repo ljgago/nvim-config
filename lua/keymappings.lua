@@ -24,9 +24,10 @@ vim.api.nvim_set_keymap('n', '<Leader>wj', '<C-w>J', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>wk', '<C-w>K', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>wl', '<C-w>L', { noremap = true })
 
-
 vim.api.nvim_set_keymap('x', 'ga', '<Plug>(EasyAlign)', {})
 vim.api.nvim_set_keymap('n', 'ga', '<Plug>(EasyAlign)', {})
+
+vim.api.nvim_set_keymap('n', 'gh', ':lua vim.lsp.diagnostic.show_line_diagnostics()\n', { noremap = true })
 
 --vim.api.nvim_exec([[
 --" Start interactive EasyAlign in visual mode (e.g. vipga)
