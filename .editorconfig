@@ -1,0 +1,83 @@
+# EditorConfig is awesome: http://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+charset = utf-8
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[Makefile]
+indent_style = tab
+indent_size = 8
+
+# Identation for Dart files
+[*.dart]
+indent_style = space
+indent_size = 2
+
+# Indentation for Haskell files
+[*.hs]
+indent_style = space
+indent_size = 2
+
+# Indentation for C/C++ files
+[*.{c,cc,cpp,h,hpp}]
+indent_style = space
+indent_size = 2
+
+# Indentation for Go files
+[*.go]
+indent_style = tab
+indent_size = 8
+
+[*.lua]
+indent_style = space
+indent_size = 2
+
+#Indentation for JSON files
+[*.json]
+indent_style = space
+indent_size = 2
+
+[*.jl]
+indent_style = space
+indent_size = 4
+
+# Indentation for HTML files
+[*.{html,js,ts,css,scss}]
+indent_style = space
+indent_size = 2
+
+# Indentation for Markdown files
+[*.{markdown,md}]
+indent_style = space
+indent_size = 2
+
+# Indentation for Rust files
+[*.rs]
+indent_style = space
+ident_size = 4
+
+# Indentation for Proto files
+[*.proto]
+indent_style = space
+indent_size = 2
+
+# Identation for vue files
+[*.vue]
+indent_style = space
+indent_size = 2
+
+[*.{toml,yaml}]
+indent_style = space
+indent_size = 2
+
+# Identation for Cobol files
+[*.cbl]
+indent_style = space
+max_line_length = 80
+rulers = 7, 8, 12, 73
