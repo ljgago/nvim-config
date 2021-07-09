@@ -66,6 +66,9 @@ return require('packer').startup(function()
   -- use 'tpope/vim-surround'
 
   -- Langs
+  -- Julia
+  use 'JuliaEditorSupport/julia-vim'
+
   -- Clojure
   -- use 'p00f/nvim-ts-rainbow'
   --use 'tpope/vim-fireplace'
