@@ -1,6 +1,12 @@
 vim.cmd('autocmd ColorScheme * hi GitSignsAdd guifg=#98be65')
 vim.cmd('autocmd ColorScheme * hi GitSignsChange guifg=#FF8800')
 vim.cmd('autocmd ColorScheme * hi GitSignsDelete guifg=#ec5f67')
+vim.cmd('autocmd ColorScheme * hi GitSignsAddNr guifg=#98be65')
+vim.cmd('autocmd ColorScheme * hi GitSignsChangeNr guifg=#FF8800')
+vim.cmd('autocmd ColorScheme * hi GitSignsDeleteNr guifg=#ec5f67')
+vim.cmd('autocmd ColorScheme * hi GitSignsAddLn guifg=#1e2127 guibg=#98be65')
+vim.cmd('autocmd ColorScheme * hi GitSignsChangeLn guifg=#1e2127 guibg=#FF8800')
+vim.cmd('autocmd ColorScheme * hi GitSignsDeleteLn guifg=#1e2127 guibg=#ec5f67')
 
 require('gitsigns').setup {
   signs = {
@@ -37,6 +43,16 @@ require('gitsigns').setup {
   sign_priority = 6,
   update_debounce = 100,
   status_formatter = nil, -- Use default
-  use_decoration_api = true,
-  use_internal_diff = true,  -- If luajit is present
+  max_file_length = 40000,
+  preview_config = {
+    -- Options passed to nvim_open_win
+    border = 'single',
+    style = 'minimal',
+    relative = 'cursor',
+    row = 0,
+    col = 1
+  },
+  yadm = {
+    enable = false
+  },
 }
