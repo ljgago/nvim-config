@@ -24,9 +24,20 @@ vim.api.nvim_set_keymap('n', '<Leader>wj', '<C-w>J', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>wk', '<C-w>K', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>wl', '<C-w>L', { noremap = true })
 
+-- Move line in Normal mode
+vim.api.nvim_set_keymap('n', '<C-Down>', ':m .+1<CR>==', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-Up>', ':m .-2<CR>==', { noremap = true })
+-- Move line in Insert mode
+vim.api.nvim_set_keymap('i', '<C-Down>', '<ESC>:m .+1<CR>==gi', { noremap = true })
+vim.api.nvim_set_keymap('i', '<C-Up>', '<ESC>:m .-2<CR>==gi', { noremap = true })
+-- Move line in Visual mode
+vim.api.nvim_set_keymap('v', '<C-Down>', ':m \'>+1<CR>gv=gv', { noremap = true })
+vim.api.nvim_set_keymap('v', '<C-Up>', ':m \'<-2<CR>gv=gv', { noremap = true })
+
 vim.api.nvim_set_keymap('x', 'ga', '<Plug>(EasyAlign)', {})
 vim.api.nvim_set_keymap('n', 'ga', '<Plug>(EasyAlign)', {})
 
+-- LSP
 vim.api.nvim_set_keymap('n', 'gh', ':lua vim.lsp.diagnostic.show_line_diagnostics()\n', { noremap = true })
 
 --vim.api.nvim_exec([[
