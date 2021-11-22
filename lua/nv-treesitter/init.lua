@@ -1,8 +1,4 @@
---require'nvim-treesitter.configs'.setup {
---  highlight = {
---    enable = true
---  },
---}
+local colors = require("colorscheme").colors()
 
 require('nvim-treesitter.configs').setup {
   --ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -10,9 +6,18 @@ require('nvim-treesitter.configs').setup {
     enable = true, -- false will disable the whole extension
     --disable = {"go"}
   },
-  -- rainbow = {
-  --   enable = true
-  -- }
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+    max_file_lines = nil,
+    colors = {
+      colors.violet,
+      colors.blue,
+      colors.magenta,
+      colors.green,
+    },
+    disable = {'go', 'lua', 'rust'}
+  }
   --playground = {
   --  enable = true,
   --  disable = {},

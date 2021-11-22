@@ -1,12 +1,14 @@
-vim.cmd('autocmd ColorScheme * hi GitSignsAdd guifg=#98be65')
-vim.cmd('autocmd ColorScheme * hi GitSignsChange guifg=#FF8800')
-vim.cmd('autocmd ColorScheme * hi GitSignsDelete guifg=#ec5f67')
-vim.cmd('autocmd ColorScheme * hi GitSignsAddNr guifg=#98be65')
-vim.cmd('autocmd ColorScheme * hi GitSignsChangeNr guifg=#FF8800')
-vim.cmd('autocmd ColorScheme * hi GitSignsDeleteNr guifg=#ec5f67')
-vim.cmd('autocmd ColorScheme * hi GitSignsAddLn guifg=#1e2127 guibg=#98be65')
-vim.cmd('autocmd ColorScheme * hi GitSignsChangeLn guifg=#1e2127 guibg=#FF8800')
-vim.cmd('autocmd ColorScheme * hi GitSignsDeleteLn guifg=#1e2127 guibg=#ec5f67')
+local colors = require("colorscheme").colors()
+
+vim.cmd('autocmd ColorScheme * hi GitSignsAdd guifg='..colors.green)
+vim.cmd('autocmd ColorScheme * hi GitSignsChange guifg='..colors.orange)
+vim.cmd('autocmd ColorScheme * hi GitSignsDelete guifg='..colors.red)
+vim.cmd('autocmd ColorScheme * hi GitSignsAddNr guifg='..colors.green)
+vim.cmd('autocmd ColorScheme * hi GitSignsChangeNr guifg='..colors.orange)
+vim.cmd('autocmd ColorScheme * hi GitSignsDeleteNr guifg='..colors.red)
+vim.cmd('autocmd ColorScheme * hi GitSignsAddLn guifg=#1e2127 guibg='..colors.green)
+vim.cmd('autocmd ColorScheme * hi GitSignsChangeLn guifg=#1e2127 guibg='..colors.orange)
+vim.cmd('autocmd ColorScheme * hi GitSignsDeleteLn guifg=#1e2127 guibg='..colors.red)
 
 require('gitsigns').setup {
   signs = {

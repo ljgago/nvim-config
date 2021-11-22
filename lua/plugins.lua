@@ -29,7 +29,15 @@ return require('packer').startup(function()
   use 'nvim-treesitter/nvim-treesitter'
   use 'norcalli/nvim-colorizer.lua'
   use 'christianchiarulli/nvcode-color-schemes.vim'
-  use 'Th3Whit3Wolf/one-nvim'
+  -- use 'Th3Whit3Wolf/one-nvim'
+  -- use 'NTBBloodbath/doom-one.nvim'
+  use 'EdenEast/nightfox.nvim'
+  -- use 'olimorris/onedark.nvim'
+  -- use 'navarasu/onedark.nvim'
+  -- use 'shaunsingh/nord.nvim'
+  use 'folke/tokyonight.nvim'
+  -- use 'sainnhe/edge'
+  use 'sainnhe/gruvbox-material'
 
   -- File Explorer
   use 'scrooloose/nerdtree'
@@ -53,6 +61,9 @@ return require('packer').startup(function()
   -- Flutter
   use {'akinsho/flutter-tools.nvim', requires = {'nvim-lua/plenary.nvim'}}
 
+  -- Go
+  use 'fatih/vim-go'
+
   -- Syntax Highlight
   use 'sheerun/vim-polyglot'
 
@@ -63,6 +74,8 @@ return require('packer').startup(function()
   use 'alvan/vim-closetag'
   use 'junegunn/vim-easy-align'
   use 'tpope/vim-commentary'
+  -- use 'p00f/nvim-ts-rainbow'
+  use 'mg979/vim-visual-multi'
   -- use 'tpope/vim-surround'
 
   -- Langs

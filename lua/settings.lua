@@ -16,6 +16,7 @@ vim.o.shiftwidth    = 2                   --
 vim.o.softtabstop   = 2                   --
 vim.o.shiftround    = true                --
 vim.o.expandtab     = true                -- inserts spaces indest <Tab>s.
+-- vim.o.smartindent   = true
 --vim.cmd('set noexpandtab')
 
 vim.o.hidden        = true                -- allow buffer switching without saving.

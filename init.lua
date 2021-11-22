@@ -20,6 +20,6 @@ require('lsp.elixir-lang')
 require('lsp.go-lang')
 require('lsp.python-lang')
 require('lsp.rust-lang')
---require('lsp.zig-lang')
+require('lsp.zig-lang')
 
 require('lsp.flutter-tools')
