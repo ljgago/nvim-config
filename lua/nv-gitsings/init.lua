@@ -1,5 +1,6 @@
 local colors = require("colorscheme").colors()
 
+-- nvim 0.5.x
 vim.cmd('autocmd ColorScheme * hi GitSignsAdd guifg='..colors.green)
 vim.cmd('autocmd ColorScheme * hi GitSignsChange guifg='..colors.orange)
 vim.cmd('autocmd ColorScheme * hi GitSignsDelete guifg='..colors.red)
@@ -10,6 +11,17 @@ vim.cmd('autocmd ColorScheme * hi GitSignsAddLn guifg=#1e2127 guibg='..colors.gr
 vim.cmd('autocmd ColorScheme * hi GitSignsChangeLn guifg=#1e2127 guibg='..colors.orange)
 vim.cmd('autocmd ColorScheme * hi GitSignsDeleteLn guifg=#1e2127 guibg='..colors.red)
 
+-- nvim 0.6.x
+vim.cmd('hi GitSignsAdd guifg='..colors.green)
+vim.cmd('hi GitSignsChange guifg='..colors.orange)
+vim.cmd('hi GitSignsDelete guifg='..colors.red)
+vim.cmd('hi GitSignsAddNr guifg='..colors.green)
+vim.cmd('hi GitSignsChangeNr guifg='..colors.orange)
+vim.cmd('hi GitSignsDeleteNr guifg='..colors.red)
+vim.cmd('hi GitSignsAddLn guifg=#1e2127 guibg='..colors.green)
+vim.cmd('hi GitSignsChangeLn guifg=#1e2127 guibg='..colors.orange)
+vim.cmd('hi GitSignsDeleteLn guifg=#1e2127 guibg='..colors.red)
+
 require('gitsigns').setup {
   signs = {
     add          = {hl = 'GitSignsAdd'   , text = '▎', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
@@ -18,8 +30,10 @@ require('gitsigns').setup {
     topdelete    = {hl = 'GitSignsDelete', text = '契', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
     changedelete = {hl = 'GitSignsChange', text = '▎', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
   },
-  numhl = false,
-  linehl = false,
+  signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
+  numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
+  linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
+  word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
   keymaps = {
     -- Default keymap options
     noremap = true,
