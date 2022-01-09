@@ -7,7 +7,7 @@ require('colorscheme')
 -- Plugins
 require('nv-autopairs')
 require('nv-colorizer')
-require('nv-comple')
+require('nv-cmp')
 require('nv-galaxyline')
 require('nv-gitsings')
 require('nv-treesitter')

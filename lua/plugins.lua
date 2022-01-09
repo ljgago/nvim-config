@@ -23,7 +23,7 @@ return require('packer').startup(function()
   use 'ryanoasis/vim-devicons'
 
   -- Status Bar
-  use 'glepnir/galaxyline.nvim'
+  use 'NTBBloodbath/galaxyline.nvim'
 
   -- Color
   use 'nvim-treesitter/nvim-treesitter'
@@ -51,7 +51,7 @@ return require('packer').startup(function()
   use 'glepnir/lspsaga.nvim'
 
   -- Autocomplete
-  use 'hrsh7th/nvim-compe'
+  use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/vim-vsnip'
 
   -- Git

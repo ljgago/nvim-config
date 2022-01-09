@@ -16,7 +16,7 @@ require('nvim-treesitter.configs').setup {
       colors.magenta,
       colors.green,
     },
-    disable = {'go', 'lua', 'rust'}
+    disable = {'go', 'lua', 'rust', 'javascript', 'typescript'}
   }
   --playground = {
   --  enable = true,
