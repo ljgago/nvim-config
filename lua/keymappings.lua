@@ -38,7 +38,7 @@ vim.api.nvim_set_keymap('x', 'ga', '<Plug>(EasyAlign)', {})
 vim.api.nvim_set_keymap('n', 'ga', '<Plug>(EasyAlign)', {})
 
 -- LSP
-vim.api.nvim_set_keymap('n', 'gh', ':lua vim.lsp.diagnostic.show_line_diagnostics()\n', { noremap = true })
+vim.api.nvim_set_keymap('n', 'gh', ':lua vim.diagnostic.open_float()\n', { noremap = true })
 
 --vim.api.nvim_exec([[
 --" Start interactive EasyAlign in visual mode (e.g. vipga)
