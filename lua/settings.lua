@@ -19,6 +19,12 @@ vim.o.expandtab     = true                -- inserts spaces indest <Tab>s.
 -- vim.o.smartindent   = true
 --vim.cmd('set noexpandtab')
 
+-- folding settings
+vim.o.foldmethod = "indent"
+vim.o.foldnestmax = 10
+vim.o.foldenable = false
+vim.o.foldlevel = 2
+
 vim.o.hidden        = true                -- allow buffer switching without saving.
 
 vim.o.ignorecase    = true                -- case insensitive for searchs.
