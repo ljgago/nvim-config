@@ -26,6 +26,17 @@ local colors = M.colors()
 vim.o.termguicolors = true
 vim.cmd('colorscheme onedark-night')
 
+-- vim.o.background = "dark"
+
+-- To enable transparency
+-- vim.g.solarized_termtrans = 1
+-- vim.cmd('colorscheme solarized8_flat')
+
+-- vim.g.gruvbox_colors = 'dark0_soft'
+-- vim.cmd('colorscheme gruvbox-flat')
+-- require('solarized').set()
+
+
 vim.cmd('autocmd ColorScheme * hi StatusLine guifg=NONE ctermfg=NONE guibg=NONE ctermbg=NONE gui=NONE cterm=NONE')
 
 -- nvim 0.5.x
@@ -81,5 +92,22 @@ vim.fn.sign_define('DiagnosticSignHint', { text = "", texthl = "DiagnosticHin
 vim.cmd('hi DiagnosticInfo guifg='..colors.blue)
 vim.cmd('hi DiagnosticUnderlineInfo guisp='..colors.blue..' cterm=undercurl gui=undercurl')
 vim.fn.sign_define('DiagnosticSignInfo', { text = "", texthl = "DiagnosticInfo", linehl="", numhl="" })
+
+-- gray
+vim.cmd('hi CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080')
+-- blue
+vim.cmd('hi CmpItemAbbrMatch guibg=NONE guifg=#569CD6')
+vim.cmd('hi CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6')
+-- light blue
+vim.cmd('hi CmpItemKindVariable guibg=NONE guifg=#9CDCFE')
+vim.cmd('hi CmpItemKindInterface guibg=NONE guifg=#9CDCFE')
+vim.cmd('hi CmpItemKindText guibg=NONE guifg=#9CDCFE')
+-- pink
+vim.cmd('hi CmpItemKindFunction guibg=NONE guifg=#C586C0')
+vim.cmd('hi CmpItemKindMethod guibg=NONE guifg=#C586C0')
+-- front
+vim.cmd('hi CmpItemKindKeyword guibg=NONE guifg=#D4D4D4')
+vim.cmd('hi CmpItemKindProperty guibg=NONE guifg=#D4D4D4')
+vim.cmd('hi CmpItemKindUnit guibg=NONE guifg=#D4D4D4')
 
 return M

@@ -11,6 +11,7 @@ require('nv-cmp')
 require('nv-galaxyline')
 require('nv-gitsings')
 require('nv-treesitter')
+require('nv-nvim-tree')
 
 -- LSP
 require('lsp')

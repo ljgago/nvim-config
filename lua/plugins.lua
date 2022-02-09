@@ -16,11 +16,13 @@ vim.cmd('packadd packer.nvim')
 return require('packer').startup(function()
   -- Packer can manage itself as an optional plugin
   use { 'wbthomason/packer.nvim', opt = true }
-  --use { 'svermeulen/vimpeccable' }
 
   -- Icons
   use 'kyazdani42/nvim-web-devicons'
   use 'ryanoasis/vim-devicons'
+
+  -- Syntax Highlight
+  use 'sheerun/vim-polyglot'
 
   -- Status Bar
   use 'NTBBloodbath/galaxyline.nvim'
@@ -28,23 +30,33 @@ return require('packer').startup(function()
   -- Color
   use 'nvim-treesitter/nvim-treesitter'
   use 'norcalli/nvim-colorizer.lua'
-  use 'christianchiarulli/nvcode-color-schemes.vim'
-  -- use 'Th3Whit3Wolf/one-nvim'
-  -- use 'NTBBloodbath/doom-one.nvim'
+  -- use 'christianchiarulli/nvcode-color-schemes.vim'
   use 'EdenEast/nightfox.nvim'
-  -- use 'olimorris/onedark.nvim'
-  -- use 'navarasu/onedark.nvim'
-  -- use 'shaunsingh/nord.nvim'
   use 'folke/tokyonight.nvim'
-  -- use 'sainnhe/edge'
   use 'sainnhe/gruvbox-material'
+  -- use 'shaunsingh/solarized.nvim'
+  -- use 'ishan9299/nvim-solarized-lua'
+  -- use 'gruvbox-community/gruvbox'
+  use 'ellisonleao/gruvbox.nvim'
+  use 'lifepillar/vim-solarized8'
+  -- use 'eddyekofo94/gruvbox-flat.nvim'
 
   -- File Explorer
-  use 'scrooloose/nerdtree'
+  -- use 'scrooloose/nerdtree'
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    }
+  }
 
   -- Fuzzy Searcher
   use {'junegunn/fzf', run = './install --all' }
   use {'junegunn/fzf.vim'}
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
 
   -- LSP
   use 'neovim/nvim-lspconfig'
@@ -63,15 +75,6 @@ return require('packer').startup(function()
   use 'tpope/vim-fugitive'
   use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
 
-  -- Flutter
-  use {'akinsho/flutter-tools.nvim', requires = {'nvim-lua/plenary.nvim'}}
-
-  -- Go
-  use 'fatih/vim-go'
-
-  -- Syntax Highlight
-  use 'sheerun/vim-polyglot'
-
   -- General Plugins
   use 'editorconfig/editorconfig-vim'
   use 'windwp/nvim-autopairs'
@@ -84,15 +87,17 @@ return require('packer').startup(function()
   -- use 'tpope/vim-surround'
 
   -- Langs
+
   -- Julia
   use 'JuliaEditorSupport/julia-vim'
-
   -- Clojure
   -- use 'p00f/nvim-ts-rainbow'
   --use 'tpope/vim-fireplace'
   --use 'luochen1990/rainbow'
   --use 'guns/vim-sexp'
   --use 'tpope/vim-sexp-mappings-for-regular-people'
+  -- Dart / Flutter
+  use {'akinsho/flutter-tools.nvim', requires = {'nvim-lua/plenary.nvim'}}
   -- Go
-  -- use 'fatih/vim-go'
+  use 'fatih/vim-go'
 end)

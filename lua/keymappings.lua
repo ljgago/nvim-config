@@ -4,11 +4,13 @@
 
 vim.g.mapleader = ' '
 -- Explorer
-vim.api.nvim_set_keymap('n', '<Leader><SPACE>', ':NERDTreeToggle\n', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<Leader><SPACE>', ':NERDTreeToggle\n', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader><SPACE>', ':NvimTreeToggle\n', { noremap = true })
 -- Search
 vim.api.nvim_set_keymap('n', '<Leader>ff', ':Files\n', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>fg', ':GFiles\n', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>sp', ':Rg\n', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>sb', ':Lines\n', { noremap = true })
 -- Buffers
 vim.api.nvim_set_keymap('n', '<Leader>bb', ':Buffers\n', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>bn', ':bnext\n', { noremap = true })
@@ -36,6 +38,10 @@ vim.api.nvim_set_keymap('v', '<C-Up>', ':m \'<-2<CR>gv=gv', { noremap = true })
 
 vim.api.nvim_set_keymap('x', 'ga', '<Plug>(EasyAlign)', {})
 vim.api.nvim_set_keymap('n', 'ga', '<Plug>(EasyAlign)', {})
+
+-- Increment/decrement
+vim.api.nvim_set_keymap('n', '+', '<C-a>', { noremap = true })
+vim.api.nvim_set_keymap('n', '-', '<C-x>', { noremap = true })
 
 -- LSP
 vim.api.nvim_set_keymap('n', 'gh', ':lua vim.diagnostic.open_float()\n', { noremap = true })

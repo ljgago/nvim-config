@@ -55,7 +55,7 @@ local function custom_file_name_alone()
 end
 
 local function custom_file_path()
-  local path = vim.fn.expand('%:h')
+  local path = vim.fn.expand('%:.:h')
   if vim.fn.empty(path) == 1 then return '' end
   if path == '.' then return '' end
   -- path = path_short(path)
