@@ -32,12 +32,19 @@ function M.setup()
   vim.o.encoding      = "UTF-8"             -- encodig utf-8
   vim.o.backspace     = "indent,eol,start"  -- backspaceever work on insert mode
 
-
   vim.cmd("set shortmess+=c")
   vim.o.clipboard = "unnamedplus"
   vim.cmd('let NERDTreeQuitOnOpen=1')
   vim.g.webdevicons_enable_nerdtree = 0
   vim.g.completion_enable_auto_popup = 1
+
+  -- Command remap
+  vim.cmd(':command! WQ wq')
+  vim.cmd(':command! WQ wq')
+  vim.cmd(':command! Wq wq')
+  vim.cmd(':command! Wqa wqa')
+  vim.cmd(':command! W w')
+  vim.cmd(':command! Q q')
 end
 
 return M

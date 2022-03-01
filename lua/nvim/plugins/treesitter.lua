@@ -17,9 +17,9 @@ function M.config()
       extended_mode = true,
       max_file_lines = nil,
       colors = {
-        colors.violet,
+        colors.purple,
         colors.blue,
-        colors.magenta,
+        colors.aqua,
         colors.green,
       },
       disable = {'go', 'lua', 'rust', 'javascript', 'typescript'}

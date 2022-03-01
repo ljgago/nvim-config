@@ -10,6 +10,11 @@ function M.config()
     return nil
   end
 
+  require("luasnip.loaders.from_vscode").lazy_load()
+  require("luasnip").filetype_extend("dart", { "flutter" })
+
+  -- vim.g.vsnip_filetypes = { dart = {"flutter"} }
+
   local kind_icons = {
     Text = '',
     Method = '',
@@ -41,7 +46,8 @@ function M.config()
   source_names = {
     buffer = "[Buffer]",
     nvim_lsp = "[LSP]",
-    ultisnips = "[UltiSnips]",
+    luasnip = "[LuaSnip]",
+    -- vsnip = "[VSnip]",
     nvim_lua = "[Lua]",
     cmp_tabnine = "[TabNine]",
     look = "[Look]",
@@ -107,9 +113,16 @@ function M.config()
         {"i", "s"}
       )
     },
-    snippet = {expand = function(args) vim.fn["UltiSnips#Anon"](args.body) end},
+    snippet = {
+      expand = function(args)
+        -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      end
+    },
     sources = {
-      {name = "buffer"}, {name = "nvim_lsp"}, {name = "ultisnips"},
+      { name = "nvim_lsp" },
+      -- { name = 'vsnip' }, -- For vsnip users.
+      { name = "luasnip" }, -- For luasnip users.
       {name = "nvim_lua"}, {name = "look"}, {name = "path"},
       {name = "calc"}, {name = "spell"}, {name = "emoji"}
     },

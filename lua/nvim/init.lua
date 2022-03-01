@@ -11,11 +11,15 @@ local builtins = {
   "nvim.plugins.autopairs",
   "nvim.plugins.cmp",
   "nvim.plugins.colorizer",
+  "nvim.plugins.flutter-tools",
+  "nvim.plugins.fzf-lua",
   "nvim.plugins.gitsigns",
   "nvim.plugins.lsp",
   "nvim.plugins.lualine",
-  "nvim.plugins.nvimtree",
+  "nvim.plugins.nvim-tree",
   "nvim.plugins.treesitter",
+  "nvim.plugins.telescope",
+  "nvim.plugins.which-key",
 }
 
 for _, builtin_path in ipairs(builtins) do
@@ -23,3 +27,11 @@ for _, builtin_path in ipairs(builtins) do
   -- setup the config
   builtin.setup()
 end
+
+-- local M = {}
+
+-- function M.reload()
+--   require("plenary.reload").reload_module("nvim")
+-- end
+
+-- return M

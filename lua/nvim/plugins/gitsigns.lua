@@ -19,15 +19,17 @@ function M.config()
   vim.cmd('autocmd ColorScheme * hi GitSignsDeleteLn guifg=#1e2127 guibg='..colors.red)
 
   -- nvim 0.6.x
-  vim.cmd('hi GitSignsAdd guifg='..colors.green)
-  vim.cmd('hi GitSignsChange guifg='..colors.orange)
-  vim.cmd('hi GitSignsDelete guifg='..colors.red)
-  vim.cmd('hi GitSignsAddNr guifg='..colors.green)
-  vim.cmd('hi GitSignsChangeNr guifg='..colors.orange)
-  vim.cmd('hi GitSignsDeleteNr guifg='..colors.red)
+  vim.cmd('hi GitSignsAdd guifg='..colors.green..' guibg='..colors.bg)
+  vim.cmd('hi GitSignsChange guifg='..colors.orange..' guibg='..colors.bg)
+  vim.cmd('hi GitSignsDelete guifg='..colors.red..' guibg='..colors.bg)
+  vim.cmd('hi GitSignsAddNr guifg='..colors.green..' guibg='..colors.bg)
+  vim.cmd('hi GitSignsChangeNr guifg='..colors.orange..' guibg='..colors.bg)
+  vim.cmd('hi GitSignsDeleteNr guifg='..colors.red..' guibg='..colors.bg)
   vim.cmd('hi GitSignsAddLn guifg=#1e2127 guibg='..colors.green)
   vim.cmd('hi GitSignsChangeLn guifg=#1e2127 guibg='..colors.orange)
   vim.cmd('hi GitSignsDeleteLn guifg=#1e2127 guibg='..colors.red)
+  vim.cmd('hi GitSignsDeleteLn guifg=#1e2127 guibg='..colors.red)
+  vim.cmd('hi clear SignColumn')
 
   return {
     signs = {

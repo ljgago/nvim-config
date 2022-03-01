@@ -25,7 +25,7 @@ function M.load(keymaps)
   end
 end
 
-function M.config(_client, bufnr)
+function M.highlight()
   local colors = require("nvim.colorscheme").colors()
 
   -- nvim 0.5.x
@@ -45,13 +45,13 @@ function M.config(_client, bufnr)
   vim.cmd('autocmd ColorScheme * hi LspDiagnosticsUnderlineWarning guisp='..colors.yellow..' cterm=undercurl gui=undercurl')
   vim.fn.sign_define('LspDiagnosticsSignWarning', { text = "", texthl = "LspDiagnosticsWarning", linehl="", numhl="" })
 
-  -- Hints in cyan
-  vim.cmd('autocmd ColorScheme * hi LspDiagnosticsHint guifg='..colors.cyan)
-  vim.cmd('autocmd ColorScheme * hi LspDiagnosticsVirtualTextHint guifg='..colors.cyan)
-  vim.cmd('autocmd ColorScheme * hi LspDiagnosticsHintSign guifg='..colors.cyan)
-  vim.cmd('autocmd ColorScheme * hi LspDiagnosticsHintFloating guifg='..colors.cyan)
-  vim.cmd('autocmd ColorScheme * hi LspDiagnosticsUnderlineHint guisp='..colors.cyan..' cterm=undercurl gui=undercurl')
-  vim.fn.sign_define('LspDiagnosticsSignHint', { text = "", texthl = "LspDiagnosticsHint", linehl="", numhl="" })
+  -- Hints in aqua
+  vim.cmd('autocmd ColorScheme * hi LspDiagnosticsHint guifg='..colors.aqua)
+  vim.cmd('autocmd ColorScheme * hi LspDiagnosticsVirtualTextHint guifg='..colors.aqua)
+  vim.cmd('autocmd ColorScheme * hi LspDiagnosticsHintSign guifg='..colors.aqua)
+  vim.cmd('autocmd ColorScheme * hi LspDiagnosticsHintFloating guifg='..colors.aqua)
+  vim.cmd('autocmd ColorScheme * hi LspDiagnosticsUnderlineHint guisp='..colors.aqua..' cterm=undercurl gui=undercurl')
+  vim.fn.sign_define('LspDiagnosticsSignHint', { text = "", texthl = "LspDiagnosticsHint", linehl="", numhl="" })
 
   -- Info in blue
   vim.cmd('autocmd ColorScheme * hi LspDiagnosticsInformation guifg='..colors.blue)
@@ -72,42 +72,26 @@ function M.config(_client, bufnr)
   vim.cmd('hi DiagnosticUnderlineWarn guisp='..colors.yellow..' cterm=undercurl gui=undercurl')
   vim.fn.sign_define('DiagnosticSignWarn', { text = "", texthl = "DiagnosticWarn", linehl="", numhl="" })
 
-  -- Hints in cyan
-  vim.cmd('hi DiagnosticHint guifg='..colors.cyan)
-  vim.cmd('hi DiagnosticUnderlineHint guisp='..colors.cyan..' cterm=undercurl gui=undercurl')
-  vim.fn.sign_define('DiagnosticSignHint', { text = "", texthl = "DiagnosticHint", linehl="", numhl="" })
+  -- Hints in aqua
+  vim.cmd('hi DiagnosticHint guifg='..colors.aqua)
+  vim.cmd('hi DiagnosticUnderlineHint guisp='..colors.aqua..' cterm=undercurl gui=undercurl')
+  vim.fn.sign_define('DiagnosticSignHint', { text = "", texthl = "DiagnosticHint", linehl="", numhl="" })
 
   -- Info in blue
   vim.cmd('hi DiagnosticInfo guifg='..colors.blue)
   vim.cmd('hi DiagnosticUnderlineInfo guisp='..colors.blue..' cterm=undercurl gui=undercurl')
   vim.fn.sign_define('DiagnosticSignInfo', { text = "", texthl = "DiagnosticInfo", linehl="", numhl="" })
+end
 
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local opts = { noremap=true, silent=true }
-  return {
-    { bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts },
-    { bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts },
-    { bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts },
-    { bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts },
-    { bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts },
-    { bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts },
-    { bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts },
-    { bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts },
-    { bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts },
-    { bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts },
-    { bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts },
-    { bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts },
-    { bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts }
-  }
+function M.config(client, bufnr)
+  -- Custom config
 end
 
 function M.on_attach(client, bufnr)
-  local config = M.config(client, bufnr)
-  M.load(config)
+  -- Load the lsp highlight
+  M.highlight()
+  -- Load the config
+  M.config(client, bufnr)
 end
 
 function M.setup()

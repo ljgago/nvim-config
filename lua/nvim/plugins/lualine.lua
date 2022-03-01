@@ -57,13 +57,13 @@ local function mode()
     S = colors.orange,
     [''] = colors.orange,
     ic = colors.yellow,
-    R = colors.violet,
-    Rv = colors.violet,
+    R = colors.purple,
+    Rv = colors.purple,
     cv = colors.red,
     ce=colors.red,
-    r = colors.cyan,
-    rm = colors.cyan,
-    ['r?'] = colors.cyan,
+    r = colors.aqua,
+    rm = colors.aqua,
+    ['r?'] = colors.aqua,
     ['!']  = colors.red,
       t = colors.red
   }
@@ -203,12 +203,12 @@ function M.config()
         {
           'diagnostics',
           sources = { 'nvim_diagnostic' },
-          symbols = { error = ' ', warn = ' ', info = ' ' },
+          symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
           diagnostics_color = {
             error = { fg = colors.red },
             warn = { fg = colors.yellow },
             info = { fg = colors.blue },
-            hint = { fg = colors.cyan },
+            hint = { fg = colors.aqua },
           },
           padding = { left = 3, right = 3 }, -- We don't need space before this
         }
@@ -228,7 +228,7 @@ function M.config()
         {
           'branch',
           icon = '',
-          color = { fg = colors.violet, gui = 'bold' },
+          color = { fg = colors.purple, gui = 'bold' },
         },
         {
           lsp_client,

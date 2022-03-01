@@ -3,96 +3,106 @@ local commit = {
 }
 
 return function()
-  -- Packer can manage itself as an optional plugin
-  use { 'wbthomason/packer.nvim', opt = true }
-
-  -- Icons
-  use 'kyazdani42/nvim-web-devicons'
-  use 'ryanoasis/vim-devicons'
-
-  -- Syntax Highlight
-  use 'sheerun/vim-polyglot'
-
-  -- Status Bar
   use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' }
+    -- Packer can manage itself as an optional plugin
+    { "wbthomason/packer.nvim", opt = true },
+
+    -- Icons
+    { "kyazdani42/nvim-web-devicons" },
+    { "ryanoasis/vim-devicons" },
+
+    -- Syntax Highlight
+    { "sheerun/vim-polyglot" },
+
+    -- Status Bar
+    { "nvim-lualine/lualine.nvim",
+      requires = { "kyazdani42/nvim-web-devicons" } },
+
+    -- File Explorer
+    { "kyazdani42/nvim-tree.lua",
+      -- commit = commit.nvim_tree,
+      requires = { "kyazdani42/nvim-web-devicons" } },
+
+    -- Fuzzy Finder
+    { "junegunn/fzf", run = "./install --all" },
+    { "junegunn/fzf.vim" },
+    { "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } },
+    { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+    { "ibhagwan/fzf-lua",
+      -- optional for icon support
+      requires = { "kyazdani42/nvim-web-devicons" }
+    },
+
+    -- LSP
+    { "neovim/nvim-lspconfig" },
+    { "glepnir/lspsaga.nvim" },
+
+    -- Autocomplete
+    { "hrsh7th/nvim-cmp",
+      requires = {
+        { "hrsh7th/cmp-buffer" },
+        { "hrsh7th/cmp-nvim-lsp" },
+        { "hrsh7th/cmp-path" },
+        { "hrsh7th/cmp-nvim-lua" },
+        { "hrsh7th/cmp-vsnip" },
+        { "tamago324/cmp-zsh" },
+        -- Snippets
+        { "rafamadriz/friendly-snippets" },
+        { "L3MON4D3/LuaSnip" },
+        { "saadparwaiz1/cmp_luasnip" },
+        { "hrsh7th/vim-vsnip" },
+        { "hrsh7th/cmp-cmdline" },
+      },
+    },
+
+    -- Git
+    { "tpope/vim-fugitive" },
+    { "lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"} },
+
+    -- Popup key bindings
+    { "folke/which-key.nvim" },
+
+    -- Color tools
+    { "nvim-treesitter/nvim-treesitter" },
+    { "norcalli/nvim-colorizer.lua" },
+
+    -- Color Themes
+    { "ellisonleao/gruvbox.nvim" },
+    { "shaunsingh/solarized.nvim" },
+    { "lifepillar/vim-solarized8" },
+    { "sainnhe/gruvbox-material" },
+    { "luisiacc/gruvbox-baby" },
+    { "rebelot/kanagawa.nvim" },
+    -- { "gruvbox-community/gruvbox" },
+    -- { "christianchiarulli/nvcode-color-schemes.vim" },
+    -- { "EdenEast/nightfox.nvim" },
+    -- { "folke/tokyonight.nvim" },
+    -- { "ishan9299/nvim-solarized-lua" },
+    -- { "eddyekofo94/gruvbox-flat.nvim" },
+
+    -- General Plugins
+    { "editorconfig/editorconfig-vim" },
+    { "windwp/nvim-autopairs" },
+    { "gennaro-tedesco/nvim-jqx" },
+    { "alvan/vim-closetag" },
+    { "tpope/vim-commentary" },
+    { "mg979/vim-visual-multi" },
+    { "junegunn/vim-easy-align" },
+    { "mbbill/undotree" },
+
+    -- Langs
+    -- Clojure
+    -- { "p00f/nvim-ts-rainbow" },
+    -- { "tpope/vim-fireplace" },
+    -- { "tpope/vim-surround" }
+    -- { "luochen1990/rainbow" },
+    -- { "guns/vim-sexp" },
+    -- { "tpope/vim-sexp-mappings-for-regular-people" },
+    -- Dart / Flutter
+    { "akinsho/flutter-tools.nvim", requires = {"nvim-lua/plenary.nvim"} },
+    -- Go
+    { "fatih/vim-go" },
+    -- Julia
+    { "JuliaEditorSupport/julia-vim" },
   }
-  -- use 'NTBBloodbath/galaxyline.nvim'
-
-  -- File Explorer
-  use {
-    'kyazdani42/nvim-tree.lua',
-    -- commit = commit.nvim_tree,
-    requires = { 'kyazdani42/nvim-web-devicons' }
-  }
-
-  -- Fuzzy Searcher
-  use { 'junegunn/fzf', run = './install --all' }
-  use { 'junegunn/fzf.vim' }
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = { 'nvim-lua/plenary.nvim' }
-  }
-
-  -- LSP
-  use 'neovim/nvim-lspconfig'
-  use 'glepnir/lspsaga.nvim'
-
-  -- Autocomplete
-  use {
-    'hrsh7th/nvim-cmp',
-    requires = { 'L3MON4D3/LuaSnip' }
-  }
-  use 'hrsh7th/vim-vsnip'
-  use 'hrsh7th/cmp-vsnip'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-
-  -- Git
-  use 'tpope/vim-fugitive'
-  use { 'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
-
-  -- Color Themes
-  use 'nvim-treesitter/nvim-treesitter'
-  use 'norcalli/nvim-colorizer.lua'
-  -- use 'christianchiarulli/nvcode-color-schemes.vim'
-  use 'EdenEast/nightfox.nvim'
-  use 'folke/tokyonight.nvim'
-  use 'sainnhe/gruvbox-material'
-  -- use 'shaunsingh/solarized.nvim'
-  -- use 'ishan9299/nvim-solarized-lua'
-  -- use 'gruvbox-community/gruvbox'
-  use 'ellisonleao/gruvbox.nvim'
-  use 'lifepillar/vim-solarized8'
-  -- use 'eddyekofo94/gruvbox-flat.nvim'
-
-  -- General Plugins
-  use 'editorconfig/editorconfig-vim'
-  use 'windwp/nvim-autopairs'
-  use 'gennaro-tedesco/nvim-jqx'
-  use 'alvan/vim-closetag'
-  use 'junegunn/vim-easy-align'
-  use 'tpope/vim-commentary'
-  -- use 'p00f/nvim-ts-rainbow'
-  use 'mg979/vim-visual-multi'
-  -- use 'tpope/vim-surround'
-
-  -- Langs
-
-  -- Clojure
-  -- use 'p00f/nvim-ts-rainbow'
-  --use 'tpope/vim-fireplace'
-  --use 'luochen1990/rainbow'
-  --use 'guns/vim-sexp'
-  --use 'tpope/vim-sexp-mappings-for-regular-people'
-  -- Dart / Flutter
-  use {'akinsho/flutter-tools.nvim', requires = {'nvim-lua/plenary.nvim'}}
-  -- Go
-  use 'fatih/vim-go'
-  -- Julia
-  use 'JuliaEditorSupport/julia-vim'
 end
-
