@@ -23,9 +23,9 @@ New modular folder structure:
     │   └── plugins.lua
     └── init.lua
 
-## Plugin structure
+## Plugins structure
 
-Plugins have a base structure like this:
+The plugins have a base structure like this:
 
 ```lua
 local M = {}
@@ -45,15 +45,15 @@ And all are loaders in the file `lua/nvim/init.lua`
 
 ## Colorscheme
 
-In this folder you can define differents base colorschemes and colorthemes,
-and define the default that will be used in the rest of the modules
+In this folder you can define differents base color schemes and color themes,
+and define the default value to be used in the rest of the modules
 (i.e. lualine, etc).
 
 ## Package Manager
 
-I use [packer](https://github.com/wbthomason/packer.nvim), the plugin setting
-is in the `lua/nvim/plugins/packer.lua`, but the plugin definitions are
-in a diferent file `lua/plugins.lua`, in this way, I split the plugin
+I'm using [packer.nvim](https://github.com/wbthomason/packer.nvim), the plugin
+setting is in the `lua/nvim/plugins/packer.lua`, but the plugin definitions
+are in a diferent file `lua/plugins.lua`, in this way, I split the plugin
 definitions and the plugin settings.
 
 ## Screenshots
