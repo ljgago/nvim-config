@@ -38,6 +38,9 @@ function M.setup()
   vim.g.webdevicons_enable_nerdtree = 0
   vim.g.completion_enable_auto_popup = 1
 
+  -- Go
+  vim.g.go_addtags_transform = "camelcase"
+
   -- Command remap
   vim.cmd(':command! WQ wq')
   vim.cmd(':command! WQ wq')

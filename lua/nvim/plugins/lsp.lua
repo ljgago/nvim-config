@@ -12,8 +12,10 @@ vim.g.go_imports_autosave = 0
 
 local servers = {
   -- "denols",
+  "elixirls",
   "gopls",
   "pyright",
+  "rnix",
   "rust_analyzer",
   "tsserver"
 }
@@ -96,13 +98,24 @@ end
 
 function M.setup()
   for _, server in pairs(servers) do
-    require('lspconfig')[server].setup {
-      on_attach = M.on_attach,
-      flags = {
-        -- This will be the default in neovim 0.7+
-        debounce_text_changes = 150,
+    if server == "elixirls" then
+      require('lspconfig')[server].setup {
+        cmd = { "/home/lgago/.local/share/elixir-ls/language_server.sh" },
+        on_attach = M.on_attach,
+        flags = {
+          -- This will be the default in neovim 0.7+
+          debounce_text_changes = 150,
+        }
       }
-    }
+    else
+      require('lspconfig')[server].setup {
+        on_attach = M.on_attach,
+        flags = {
+          -- This will be the default in neovim 0.7+
+          debounce_text_changes = 150,
+        }
+      }
+    end
   end
 end
 

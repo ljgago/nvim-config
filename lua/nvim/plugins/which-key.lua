@@ -76,7 +76,7 @@ function M.config()
       b = {
         name = "Buffers",
         b = { ":FzfLua buffers<CR>", "List buffers" },
-        N = { ":new<CR>", "Open a new empty buffer" },
+        o = { ":new<CR>", "Open a new empty buffer" },
         V = { ":vnew<CR>", "Open a vertical new empty buffer" },
         a = { ":ball<CR>", "Open all buffers" },
         A = { ":vertical ball<CR>", "Open in vertical all buffers" },
@@ -123,6 +123,8 @@ function M.config()
         a = { ":FzfLua lsp_code_actions<CR>", "List Code Action" },
         R = { ":FzfLua lsp_references<CR>", "List References" },
         i = { ":FzfLua lsp_implementation<CR>", "List Implementations" },
+        s = { ":FzfLua lsp_document_symbols<CR>", "Search document symbols" },
+        S = { ":FzfLua lsp_live_workspace_symbols<CR>", "Search workspace Symbols" },
 
         d = { ":lua vim.lsp.buf.definition()<CR>", "Go to Definition" },
         D = { ":lua vim.lsp.buf.declaration()<CR>", "Go to Declaration" },
