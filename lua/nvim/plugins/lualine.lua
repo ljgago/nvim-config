@@ -38,8 +38,6 @@ local function file_readonly()
   return ''
 end
 
---
-
 local function left_line()
 return '▎ '
 end
@@ -86,8 +84,8 @@ local function filepath()
   return path .. '/'
 end
 
-
 local function filename()
+  local path = vim.fn.expand('%:.:h')
   local file = vim.fn.expand('%:t')
   if vim.fn.empty(file) == 1 then return '' end
   if string.len(file_readonly()) ~= 0 then
@@ -96,15 +94,18 @@ local function filename()
   if vim.bo.modifiable then
     if vim.bo.modified then
       vim.api.nvim_command('hi LualineFileName guifg=' .. colors.red .. ' gui=bold')
-      return file
-    else
+      if path == '.' then
+        return '  ' .. file
+      else
+        return file
+      end
     end
   end
-  vim.api.nvim_command('hi LualineFileName guifg='..colors.fg..' gui=bold')
+  vim.api.nvim_command('hi LualineFileName guifg=' .. colors.fg .. ' gui=bold')
   return file
 end
 
-local function filename_alone()
+local function filename_inactive()
   local file = vim.fn.expand('%:t')
   if vim.fn.empty(file) == 1 then return '' end
   if string.len(file_readonly()) ~= 0 then
@@ -112,12 +113,11 @@ local function filename_alone()
   end
   if vim.bo.modifiable then
     if vim.bo.modified then
-      vim.api.nvim_command('hi LualineFilenameAlone guifg='..colors.red)
+      vim.api.nvim_command('hi LualineFilenameNC guifg=' .. colors.red .. ' gui=bold')
       return '  ' .. file
-    else
     end
   end
-  vim.api.nvim_command('hi LualineFilenameAlone guifg='..colors.fg)
+  vim.api.nvim_command('hi LualineFilenameNC guifg=' .. colors.fg .. ' gui=bold')
   return file
 end
 
@@ -138,7 +138,6 @@ function lsp_client()
   end
   return msg
 end
-
 
 function M.config()
   local nvimtree = {
@@ -281,9 +280,9 @@ function M.config()
           padding = { left = 0, right = 0 }, -- We don't need space before this
         },
         {
-          filename,
+          filename_inactive,
           cond = conditions.buffer_not_empty,
-          color = 'LualineFilename',
+          color = 'LualineFilenameNC',
           padding = { left = 0, right = 0 }, -- We don't need space before this
         },
 

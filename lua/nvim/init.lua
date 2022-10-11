@@ -16,9 +16,10 @@ local builtins = {
   "nvim.plugins.gitsigns",
   "nvim.plugins.lsp",
   "nvim.plugins.lualine",
+  -- "nvim.plugins.null-ls",
   "nvim.plugins.nvim-tree",
-  "nvim.plugins.treesitter",
   "nvim.plugins.telescope",
+  "nvim.plugins.treesitter",
   "nvim.plugins.which-key",
 }
 

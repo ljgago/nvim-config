@@ -19,6 +19,7 @@ function M.config()
     hijack_cursor        = false,
     update_cwd           = false,
     hijack_unnamed_buffer_when_opening = false,
+    reload_on_bufenter = false,
     hijack_directories   = {
       enable = true,
       auto_open = true,
@@ -52,7 +53,6 @@ function M.config()
     },
     view = {
       width = 30,
-      height = 30,
       hide_root_folder = false,
       side = 'left',
       mappings = {

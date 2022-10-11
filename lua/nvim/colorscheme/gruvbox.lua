@@ -15,13 +15,18 @@ function M.colors()
     blue     = "#83a598",
     purple   = "#d3869b",
     aqua     = "#8ec07c",
-    orange   = "#d65d0e",
+    orange   = "#fe8019",
   }
 end
 
 function M.theme()
   vim.o.termguicolors = true
   vim.o.background = "dark"
+  require("gruvbox").setup({
+    overrides = {
+      Operator = { fg = "#fe8019", italic = false },
+    }
+  })
   vim.cmd("colorscheme gruvbox")
 end
 

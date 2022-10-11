@@ -18,11 +18,15 @@ function M.config()
       max_file_lines = nil,
       colors = {
         colors.purple,
+        colors.orange,
+        colors.yellow,
         colors.blue,
-        colors.aqua,
-        colors.green,
+        -- colors.purple,
+        -- colors.blue,
+        -- colors.aqua,
+        -- colors.green,
       },
-      disable = {'go', 'lua', 'rust', 'javascript', 'typescript'}
+      disable = {'lua'} --, 'javascript', 'typescript'}
     }
   }
 end

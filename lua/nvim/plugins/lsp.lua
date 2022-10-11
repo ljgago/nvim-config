@@ -4,20 +4,19 @@
 
 local M = {}
 
-vim.g.go_gopls_enabled = 0
-vim.g.go_fmt_autosave = 0
-vim.g.go_mod_fmt_autosave = 0
-vim.g.go_asmfmt_autosave = 0
-vim.g.go_imports_autosave = 0
-
 local servers = {
+  "clojure_lsp",
   -- "denols",
+  "dhall_lsp_server",
   "elixirls",
+  "eslint",
+  "jsonls",
   "gopls",
+  "hls",
   "pyright",
   "rnix",
   "rust_analyzer",
-  "tsserver"
+  "tsserver",
 }
 
 function M.load(keymaps)
@@ -89,27 +88,59 @@ function M.config(client, bufnr)
   -- Custom config
 end
 
-function M.on_attach(client, bufnr)
-  -- Load the lsp highlight
-  M.highlight()
+function M.on_attach_common(client, bufnr)
   -- Load the config
   M.config(client, bufnr)
 end
 
+function M.on_attach_eslint(client, bufnr)
+  -- client.server_capabilities.document_formatting = true
+  -- client.server_capabilities.goto_definition = false
+  client.server_capabilities.documentFormattingProvider = true
+  client.server_capabilities.documentGotoDefinitionProvider = false
+end
+
+function M.on_attach_tsserver(client, bufnr)
+  -- client.server_capabilities.document_formatting = false
+  -- client.server_capabilities.goto_definition = true
+  client.server_capabilities.document_formatting = false
+  client.server_capabilities.documentGotoDefinitionProvider = true
+end
+
+function M.on_attach(server)
+  if server == "eslint" then
+    return M.on_attach_eslint
+  end
+
+  if server == "tsserver" then
+    return M.on_attach_tsserver
+  end
+
+  return M.on_attach_common
+end
+
 function M.setup()
+  -- Load the lsp highlight
+  M.highlight()
+
   for _, server in pairs(servers) do
     if server == "elixirls" then
       require('lspconfig')[server].setup {
         cmd = { "/home/lgago/.local/share/elixir-ls/language_server.sh" },
-        on_attach = M.on_attach,
+        on_attach = M.on_attach(server),
         flags = {
           -- This will be the default in neovim 0.7+
           debounce_text_changes = 150,
         }
       }
+    -- elseif server == "rust_analyzer" then
+    --   require('lspconfig')[server].setup {
+    --     cmd = { "rustup run stable rust-analyzer" },
+    --     on_attach = M.on_attach(server),
+    --   }
     else
       require('lspconfig')[server].setup {
-        on_attach = M.on_attach,
+        on_attach = M.on_attach(server),
         flags = {
           -- This will be the default in neovim 0.7+
           debounce_text_changes = 150,

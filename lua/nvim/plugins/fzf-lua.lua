@@ -8,7 +8,15 @@ function M.config()
   return {
     fzf_opts = {
       ["--layout"] = "default",
-    }
+    },
+    -- winopts = {
+    --   preview = {
+    --     winopts = {
+    --       cursorline = false,
+    --       cursorcolumn = false,
+    --     },
+    --   },
+    -- },
   }
 end
 

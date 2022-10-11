@@ -36,6 +36,7 @@ return function()
     -- LSP
     { "neovim/nvim-lspconfig" },
     { "glepnir/lspsaga.nvim" },
+    { "jose-elias-alvarez/null-ls.nvim" },
 
     -- Autocomplete
     { "hrsh7th/nvim-cmp",
@@ -92,7 +93,7 @@ return function()
 
     -- Langs
     -- Clojure
-    -- { "p00f/nvim-ts-rainbow" },
+    { "p00f/nvim-ts-rainbow" },
     -- { "tpope/vim-fireplace" },
     -- { "tpope/vim-surround" }
     -- { "luochen1990/rainbow" },

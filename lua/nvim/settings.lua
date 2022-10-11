@@ -39,7 +39,13 @@ function M.setup()
   vim.g.completion_enable_auto_popup = 1
 
   -- Go
-  vim.g.go_addtags_transform = "camelcase"
+  vim.g.go_gopls_enabled = 0
+  vim.g.go_fmt_autosave = 0
+  vim.g.go_mod_fmt_autosave = 0
+  vim.g.go_asmfmt_autosave = 0
+  vim.g.go_imports_autosave = 0
+  vim.g.go_addtags_transform = "snakecase"
+  -- vim.g.go_addtags_transform = "camelcase"
 
   -- Command remap
   vim.cmd(':command! WQ wq')

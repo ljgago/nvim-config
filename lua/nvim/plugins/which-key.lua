@@ -128,7 +128,7 @@ function M.config()
 
         d = { ":lua vim.lsp.buf.definition()<CR>", "Go to Definition" },
         D = { ":lua vim.lsp.buf.declaration()<CR>", "Go to Declaration" },
-        f = { ":lua vim.lsp.buf.formatting()<CR>", "Format" },
+        f = { ":lua vim.lsp.buf.format()<CR>", "Format" },
         r = { ":lua vim.lsp.buf.rename()<CR>", "Rename" },
         K = { ":lua vim.lsp.buf.hover()<CR>", "Show Hover" },
         h = { ":lua vim.lsp.buf.signature_help()<CR>", "Signature help" },

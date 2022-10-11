@@ -51,6 +51,9 @@ function M.keymaps()
     -- Terminal
     { 't', '<Space><ESC>', '<C-\\><C-n>' },
 
+    -- Replace unused key
+    { 'n', 'K', 'k' }
+
     -- LSP
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
     -- {'n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>' },
