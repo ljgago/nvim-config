@@ -12,8 +12,6 @@ function M.config()
   return {
     disable_netrw        = false,
     hijack_netrw         = true,
-    open_on_setup        = false,
-    ignore_ft_on_setup   = {},
     auto_reload_on_write = true,
     open_on_tab          = false,
     hijack_cursor        = false,
@@ -25,7 +23,8 @@ function M.config()
       auto_open = true,
     },
     diagnostics = {
-      enable = false,
+      enable = true,
+      show_on_dirs = false,
       icons = {
         hint = "",
         info = "",

@@ -1,5 +1,5 @@
 -- ===========================
--- Onedark Night - Colorscheme
+-- Gruvbox - Colorscheme
 -- ===========================
 
 local M = {}

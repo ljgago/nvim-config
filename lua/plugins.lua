@@ -12,7 +12,9 @@ return function()
     { "ryanoasis/vim-devicons" },
 
     -- Syntax Highlight
-    { "sheerun/vim-polyglot" },
+    -- { "sheerun/vim-polyglot" },
+    -- { "nathom/filetype.nvim" },
+    -- { "SeniorMars/typst.nvim" },
 
     -- Status Bar
     { "nvim-lualine/lualine.nvim",
@@ -86,14 +88,18 @@ return function()
     { "windwp/nvim-autopairs" },
     { "gennaro-tedesco/nvim-jqx" },
     { "alvan/vim-closetag" },
-    { "tpope/vim-commentary" },
+    -- { "tpope/vim-commentary" },
+    { "numToStr/Comment.nvim" },
     { "mg979/vim-visual-multi" },
     { "junegunn/vim-easy-align" },
     { "mbbill/undotree" },
+    { "p00f/nvim-ts-rainbow" },
 
     -- Langs
+    -- Java
+    { "mfussenegger/nvim-jdtls" },
     -- Clojure
-    { "p00f/nvim-ts-rainbow" },
+    -- { "Olical/conjure" },
     -- { "tpope/vim-fireplace" },
     -- { "tpope/vim-surround" }
     -- { "luochen1990/rainbow" },

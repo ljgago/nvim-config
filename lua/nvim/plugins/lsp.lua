@@ -9,13 +9,18 @@ local servers = {
   -- "denols",
   "dhall_lsp_server",
   "elixirls",
-  "eslint",
+  -- "eslint",
+  "jdtls",
+  -- "java_language_server",
   "jsonls",
   "gopls",
   "hls",
   "pyright",
   "rnix",
+  -- "rome",
+  "svelte",
   "rust_analyzer",
+  "vuels",
   "tsserver",
 }
 
@@ -82,6 +87,9 @@ function M.highlight()
   vim.cmd('hi DiagnosticInfo guifg='..colors.blue)
   vim.cmd('hi DiagnosticUnderlineInfo guisp='..colors.blue..' cterm=undercurl gui=undercurl')
   vim.fn.sign_define('DiagnosticSignInfo', { text = "", texthl = "DiagnosticInfo", linehl="", numhl="" })
+
+  -- Disable LSP on Clojure REPL buffer with conjure
+  vim.cmd('autocmd BufNewFile conjure-log-* lua vim.diagnostic.disable(0)')
 end
 
 function M.config(client, bufnr)
@@ -138,6 +146,21 @@ function M.setup()
     --     cmd = { "rustup run stable rust-analyzer" },
     --     on_attach = M.on_attach(server),
     --   }
+    -- elseif server == "java_language_server" then
+    --   require('lspconfig')[server].setup {
+    --     cmd = { "lang_server_linux.sh" },
+    --     on_attach = M.on_attach(server),
+    --   }
+    elseif server == "rome" then
+      require('lspconfig')[server].setup {
+        formater = {
+          indentStyle = "space",
+        }
+      }
+    elseif server == "svelte" then
+      require('lspconfig')[server].setup {
+        filetypes = { "svelte", "typescript", "javascript" }
+      }
     else
       require('lspconfig')[server].setup {
         on_attach = M.on_attach(server),

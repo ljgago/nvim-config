@@ -10,10 +10,8 @@ function M.config()
     return nil
   end
 
-  require("luasnip.loaders.from_vscode").lazy_load()
+  -- require("luasnip.loaders.from_vscode").lazy_load({})
   require("luasnip").filetype_extend("dart", { "flutter" })
-
-  -- vim.g.vsnip_filetypes = { dart = {"flutter"} }
 
   local kind_icons = {
     Text = '',

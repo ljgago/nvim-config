@@ -8,13 +8,22 @@ function M.config()
   local colors = require("nvim.colorscheme").colors()
 
   return {
+    ensure_installed = {
+      "eex",
+      "elixir",
+      "erlang",
+      "heex",
+      "html",
+      "surface"
+    },
     highlight = {
       enable = true,
+      additional_vim_regex_highlighting = false,
       --disable = {"go"}
     },
     rainbow = {
       enable = true,
-      extended_mode = true,
+      -- extended_mode = true,
       max_file_lines = nil,
       colors = {
         colors.purple,

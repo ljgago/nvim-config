@@ -68,7 +68,12 @@ function M.config()
 
     -- NOTE: Prefer using : over <cmd> as the latter avoids going back in normal-mode.
     -- see https://neovim.io/doc/user/map.html#:map-cmd
-    vmappings = {},
+    vmappings = {
+      c = {
+        name = "Conjure",
+        e = { ":ConjureEval<CR>", "Evaluates under cursor" },
+      },
+    },
     mappings = {
       ["<leader>"] = { ":NvimTreeToggle<CR>", "Toggle NvimTree" },
       ["e"] = { ":lua vim.diagnostic.open_float()<CR>", "Diagnostics" },
@@ -84,6 +89,13 @@ function M.config()
         p = { ":bp<CR>", "Previous buffer" },
         d = { ":bd<cr>", "Delete buffer" },
         D = { ":bd!<cr>", "Force delete buffer" },
+      },
+      c = {
+        name = "Conjure",
+        b = { ":ConjureEvalBuf<CR>", "Evaluates buffer" },
+        e = { ":ConjureEval<CR>", "Evaluates under cursor" },
+        f = { ":ConjureEvalFile<CR>", "Evaluates file" },
+        t = { ":ConjureLogToggle<CR>", "Toggle Conjure log" },
       },
       f = {
         name = "Find",
