@@ -1,23 +1,14 @@
--- ========================================
--- Plugin - jose-elias-alvarez/null-ls.nvim
--- ========================================
+local filetype_attach = setmetatable({}, {
+  __index = function()
+    return function() end
+  end,
+})
+return function(client, bufnr)
+  local filetype = vim.api.nvim_buf_get_option(0, "filetype")
 
-local null_ls = require("null-ls")
+  local colors = require("plugins.colorscheme").colors()
 
-local M = {}
-
-function M.config()
-  return {
-    sources = {
-      require("null-ls").builtins.diagnostics.vale,
-    }
-  }
-end
-
-function M.highlight()
-  local colors = require("nvim.colorscheme").colors()
-
-  -- nvim 0.6.x and 0.7.x
+  -- nvim 0.6.x
   -- Errors in red
   vim.cmd('hi DiagnosticError guifg='..colors.red)
   vim.cmd('hi DiagnosticUnderlineError guisp='..colors.red..' cterm=undercurl gui=undercurl')
@@ -37,18 +28,10 @@ function M.highlight()
   vim.cmd('hi DiagnosticInfo guifg='..colors.blue)
   vim.cmd('hi DiagnosticUnderlineInfo guisp='..colors.blue..' cterm=undercurl gui=undercurl')
   vim.fn.sign_define('DiagnosticSignInfo', { text = "", texthl = "DiagnosticInfo", linehl="", numhl="" })
+
+  -- Disable LSP on Clojure REPL buffer with conjure
+  vim.cmd('autocmd BufNewFile conjure-log-* lua vim.diagnostic.disable(0)')
+
+  -- Attach any filetype specific options to the client
+  filetype_attach[filetype](client, bufnr)
 end
-
-local on_attach = {
-  method = null_ls.methods.DIAGNOSTICS,
-  filetypes = { "markdown", "text" },
-  generator = { fn = M.highlight },
-}
-
-function M.setup()
-  local config = M.config()
-  null_ls.register(on_attach)
-  null_ls.setup(config)
-end
-
-return M

@@ -1,12 +1,6 @@
--- =============================
--- Plugin - folke/which-key.nvim
--- =============================
-
 local M = {}
 
 function M.config()
-  vim.g.mapleader = " "
-
   return {
     setup = {
       plugins = {
@@ -192,20 +186,21 @@ function M.config()
   }
 end
 
-function M.setup()
-  local wk = require("which-key")
-  local config = M.config()
+return {
+  "folke/which-key.nvim",
+  config = function()
+    local wk = require "which-key"
+    local config = M.config()
 
-  wk.setup(config.setup)
+    wk.setup(config.setup)
 
-  local opts = config.opts
-  local vopts = config.vopts
+    local opts = config.opts
+    local vopts = config.vopts
 
-  local mappings = config.mappings
-  local vmappings = config.vmappings
+    local mappings = config.mappings
+    local vmappings = config.vmappings
 
-  wk.register(mappings, opts)
-  wk.register(vmappings, vopts)
-end
-
-return M
+    wk.register(mappings, opts)
+    wk.register(vmappings, vopts)
+  end,
+}
