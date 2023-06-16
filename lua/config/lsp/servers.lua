@@ -13,25 +13,33 @@ end
 
 return {
   ["clojure_lsp"] = default,
+  ["crystalline"] = default,
+  ["csharp_ls"] = default,
   ["dhall_lsp_server"] = default,
   ["elixirls"] = function()
     return {
       on_attach = lsp_attach,
       flags = lsp_flags,
-      cmd = { "language_server.sh" },
+      cmd = { "elixir-ls" },
     }
   end,
   -- ["eslint"] = default,
   ["gopls"] = default,
   ["html"] = default,
-  ["jdtls"] = default,
+  -- ["jdtls"] = default,
   ["jsonls"] = default,
   ["pyright"] = default,
-  ["rnix"] = default,
+  ["rnix"] = function()
+    return {
+      on_attach = lsp_attach,
+      flags = lsp_flags,
+      filetypes = { "nix" },
+    }
+  end,
   ["svelte"] = function()
     return {
-      -- on_attach = lsp_attach,
-      -- flags = lsp_flags,
+      on_attach = lsp_attach,
+      flags = lsp_flags,
       filetypes = { "svelte", "typescript", "javascript" },
     }
   end,
@@ -73,6 +81,6 @@ return {
       },
     }
   end,
-  ["typst_lsp"] = default,
+  -- ["typst_lsp"] = default,
   ["vuels"] = default,
 }
