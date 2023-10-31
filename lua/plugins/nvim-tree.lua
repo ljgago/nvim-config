@@ -4,9 +4,10 @@ return {
     "nvim-tree/nvim-web-devicons"
   },
   config = function()
-    local nvimtree = require "nvim-tree"
+    local nvimtree = require("nvim-tree")
 
-    nvimtree.setup {
+    nvimtree.setup({
+      select_prompts       = true,
       disable_netrw        = false,
       hijack_netrw         = true,
       auto_reload_on_write = true,
@@ -49,12 +50,12 @@ return {
       },
       view = {
         width = 30,
-        hide_root_folder = false,
+        -- hide_root_folder = false,
         side = 'left',
-        mappings = {
-          custom_only = false,
-          list = {}
-        },
+        -- mappings = {
+        --   custom_only = false,
+        --   list = {}
+        -- },
         number = false,
         relativenumber = false,
         signcolumn = "yes"
@@ -71,6 +72,6 @@ return {
           quit_on_open = true,
         }
       }
-    }
+    })
   end,
 }

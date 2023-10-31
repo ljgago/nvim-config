@@ -5,10 +5,15 @@ return {
     "junegunn/fzf"
   },
   config = function()
-    require("fzf-lua").setup {
+    require("fzf-lua").setup({
+      "telescope",
       fzf_opts = {
         ["--layout"] = "default",
-      }
-    }
+      },
+      files = {
+        prompt = 'Files❯ ',
+        cwd_prompt = false
+      },
+    })
   end,
 }

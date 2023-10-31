@@ -16,9 +16,10 @@ return {
   },
   event = "VeryLazy",
   config = function()
-    local cmp = require "cmp"
+    local cmp = require("cmp")
 
-    require("luasnip").filetype_extend("dart", { "flutter" })
+    require("luasnip.loaders.from_vscode").lazy_load({})
+    -- require("luasnip").filetype_extend("dart", { "flutter" })
 
     local kind_icons = {
       Text = '',
@@ -48,7 +49,7 @@ return {
       TypeParameter = '',
     }
 
-    source_names = {
+    local source_names = {
       buffer = "[Buffer]",
       nvim_lsp = "[LSP]",
       luasnip = "[LuaSnip]",
@@ -73,7 +74,7 @@ return {
     --   buffer = "(Buffer)",
     -- }
 
-    cmp.setup {
+    cmp.setup({
       formatting = {
         fields = { 'kind', 'abbr', 'menu' },
         format = function(entry, vim_item)
@@ -132,6 +133,6 @@ return {
         {name = "calc"}, {name = "spell"}, {name = "emoji"}
       },
       completion = {completeopt = "menu,menuone,noinsert"}
-    }
+    })
   end,
 }

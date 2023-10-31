@@ -1,3 +1,92 @@
+local colors = require("plugins.colorscheme").colors()
+
+-- Lsp client
+local function lsp_client()
+  -- local msg = 'No Active Lsp'
+  local msg = ''
+  local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+  local clients = vim.lsp.get_active_clients()
+  if next(clients) == nil then
+    return msg
+  end
+  for _, client in ipairs(clients) do
+    local filetypes = client.config.filetypes
+    if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+      return client.name
+    end
+  end
+  return msg
+end
+
+return {
+  "nvim-lualine/lualine.nvim",
+  dependencies = {
+    "nvim-tree/nvim-web-devicons"
+  },
+  config = function()
+    local custom_gruvbox = require("lualine.themes.gruvbox_dark")
+
+    custom_gruvbox.insert.c.bg = "#3c3836"
+    custom_gruvbox.command.c.bg = "#3c3836"
+    custom_gruvbox.command.c.fg = "#a89984"
+    custom_gruvbox.visual.c.bg = "#3c3836"
+    custom_gruvbox.visual.c.fg = "#a89984"
+
+    require("lualine").setup({
+      options = {
+        theme = custom_gruvbox,
+        icons_enabled = true,
+        globalstatus = true,
+        always_divide_middle = true,
+        -- section_separators = { left = '', right = ''},
+        -- component_separators = { left = '', right = ''},
+        component_separators = { left = "|", right = "|" },
+        section_separators = "",
+      },
+      extensions = { "quickfix", "fugitive" },
+      sections = {
+        lualine_a = { { "mode", upper = false } },
+        lualine_b = { { "branch", icon = "" }, "db_ui#statusline" },
+        lualine_c = { { "filename", file_status = true, path = 1, use_mode_colors = false, } },
+        lualine_x = {
+          {
+            "diagnostics",
+            symbols = { error = " ", warn = " ", hint = "󰠠 ", info = " " },
+          },
+          {
+            "diff",
+            colored = true,
+            -- symbols = { added = '  ', modified = ' 柳 ', removed = '  ' },
+            -- symbols = { added = '  ', modified = '~', removed = '  ' },
+            symbols = { added = '+', modified = '~', removed = '-' },
+            diff_color = {
+              added = { fg = colors.green },
+              modified = { fg = colors.orange },
+              removed = { fg = colors.red },
+            },
+          },
+          {
+            require("lazy.status").updates,
+            cond = require("lazy.status").has_updates,
+            -- color = { fg = "ff9e64" },
+          },
+        },
+        lualine_y = {
+          {
+            lsp_client,
+            -- cond = conditions.check_lsp_client,
+            color = { fg = colors.yellow, gui = 'bold' },
+          },
+          "filetype"
+        },
+        lualine_z = { "location" },
+      },
+      winbar = {},
+      inactive_winbar = {},
+    })
+  end,
+}
+
 -- local colors = require("plugins.colorscheme").colors()
 --
 -- -- Aux functions
@@ -311,85 +400,3 @@
 --     }
 --   end,
 -- }
-
-local colors = require("plugins.colorscheme").colors()
-
--- Lsp client
-function lsp_client()
-  -- local msg = 'No Active Lsp'
-  local msg = ''
-  local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-  local clients = vim.lsp.get_active_clients()
-  if next(clients) == nil then
-    return msg
-  end
-  for _, client in ipairs(clients) do
-    local filetypes = client.config.filetypes
-    if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-      return client.name
-    end
-  end
-  return msg
-end
-
-
-
-return {
-  "nvim-lualine/lualine.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
-  config = function()
-    local custom_gruvbox = require "lualine.themes.gruvbox_dark"
-
-    custom_gruvbox.insert.c.bg = "#3c3836"
-    custom_gruvbox.command.c.bg = "#3c3836"
-    custom_gruvbox.command.c.fg = "#a89984"
-    custom_gruvbox.visual.c.bg = "#3c3836"
-    custom_gruvbox.visual.c.fg = "#a89984"
-
-    require("lualine").setup {
-      options = {
-        theme = custom_gruvbox,
-        icons_enabled = true,
-        globalstatus = true,
-        always_divide_middle = true,
-        -- section_separators = { left = '', right = ''},
-        -- component_separators = { left = '', right = ''},
-        component_separators = { left = "|", right = "|"},
-        section_separators = "",
-      },
-      extensions = { "quickfix", "fugitive" },
-      sections = {
-        lualine_a = { { "mode", upper = false } },
-        lualine_b = { { "branch", icon = "" }, "db_ui#statusline" },
-        lualine_c = { { "filename", file_status = true, path = 1, use_mode_colors = false, } },
-        lualine_x = {
-          {
-            "diagnostics",
-            symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
-          },
-          {
-            "diff",
-            -- symbols = { added = '  ', modified = ' 柳 ', removed = '  ' },
-            symbols = { added = '+', modified = '~', removed = '-' },
-          },
-          {
-            require("lazy.status").updates,
-            cond = require("lazy.status").has_updates,
-            -- color = { fg = "ff9e64" },
-          },
-        },
-        lualine_y = {
-          {
-            lsp_client,
-            -- cond = conditions.check_lsp_client,
-            color = { fg = colors.yellow, gui = 'bold' },
-          },
-          "filetype"
-        },
-        lualine_z = { "location" },
-      },
-      winbar = {},
-      inactive_winbar = {},
-    }
-  end,
-}

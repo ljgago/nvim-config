@@ -19,8 +19,8 @@ return {
     vim.cmd('hi GitSignsDeleteLn guifg=#1e2127 guibg='..colors.red)
     vim.cmd('hi clear SignColumn')
 
-    local gitsigns = require "gitsigns"
-    gitsigns.setup {
+    local gitsigns = require("gitsigns")
+    gitsigns.setup({
       signs = {
         add = {
           hl = "GitSignsAdd",
@@ -55,11 +55,11 @@ return {
       },
       numhl = false,
       linehl = false,
-      keymaps = {
-        -- Default keymap options
-        noremap = true,
-        buffer = true,
-      },
+      -- keymaps = {
+      --   -- Default keymap options
+      --   noremap = true,
+      --   buffer = true,
+      -- },
       signcolumn = true,
       word_diff = false,
       attach_to_untracked = true,
@@ -89,6 +89,6 @@ return {
       sign_priority = 6,
       update_debounce = 200,
       status_formatter = nil, -- Use default
-    }
+    })
   end,
 }

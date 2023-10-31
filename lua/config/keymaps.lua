@@ -1,69 +1,52 @@
-local M = {}
+local opts = { noremap = true, silent = true }
 
-function M.map(mode, key, val, opts)
-  local options = { noremap = true, silent = true }
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
-  vim.api.nvim_set_keymap(mode, key, val, options)
-end
+-- Move line in Normal mode
+vim.keymap.set("n", "<C-Up>", "<Cmd>m -2<CR>", opts)
+vim.keymap.set("n", "<C-Down>", "<Cmd>m +1<CR>", opts)
 
-function M.load(keymaps)
-  for _, keymap in pairs(keymaps) do
-    local mode, key, val, opts = unpack(keymap)
-    M.map(mode, key, val, opts)
-    -- vim.api.nvim_set_keymap(mode, key, val, opts)
-  end
-end
+-- Move line in Insert mode
+-- vim.keymap.set("i", "<C-Up>", "<ESC>:m .-2<CR>==gi", opts)
+-- vim.keymap.set("i", "<C-Down>", "<ESC>:m .+1<CR>==gi", opts)
+vim.keymap.set("i", "<C-Up>", "<Cmd>m -2<CR>", opts)
+vim.keymap.set("i", "<C-Down>", "<Cmd>m +1<CR>", opts)
 
-function M.keymaps()
-  return {
-    -- Move line in Normal mode
-    { 'n', '<C-Down>', ':m .+1<CR>==' },
-    { 'n', '<C-Up>', ':m .-2<CR>==' },
+-- Move line in Visual mode
+vim.keymap.set("v", "<C-Up>", ":m \'<-2<CR>gv=gv", opts)
+vim.keymap.set("v", "<C-Down>", ":m \'>+1<CR>gv=gv", opts)
 
-    -- Move line in Insert mode
-    { 'i', '<C-Down>', '<ESC>:m .+1<CR>==gi' },
-    { 'i', '<C-Up>', '<ESC>:m .-2<CR>==gi' },
+-- EasyAlign
+vim.keymap.set("x", "ga", "<Plug>(EasyAlign}", opts)
+vim.keymap.set("n", "ga", "<Plug>(EasyAlign)", opts)
 
-    -- Move line in Visual mode
-    { 'v', '<C-Down>', ':m \">+1<CR>gv=gv' },
-    { 'v', '<C-Up>', ':m \"<-2<CR>gv=gv' },
+-- Increment/decrement
+vim.keymap.set("n", "+", "<C-a>", opts)
+vim.keymap.set("n", "-", "<C-x>", opts)
 
-    -- EasyAlign
-    { 'x', 'ga', '<Plug>(EasyAlign}' },
-    { 'n', 'ga', '<Plug>(EasyAlign)' },
+-- Folding
+vim.keymap.set("i", "<F9>", "<Esc>za", opts)
+vim.keymap.set("n", "<F9>", "za", opts)
+vim.keymap.set("o", "<F9>", "<Esc>za", opts)
+vim.keymap.set("v", "<F9>", "zf", opts)
 
-    -- Increment/decrement
-    { 'n', '+', '<C-a>' },
-    { 'n', '-', '<C-x>' },
+-- Terminal
+vim.keymap.set("t", "<ESC>", "<C-\\><C-n>", opts)
 
-    -- Folding
-    { 'i', '<F9>', '<ESC>za' },
-    { 'n', '<F9>', 'za' },
-    { 'o', '<F9>', '<ESC>za' },
-    { 'v', '<F9>', 'zf' },
+-- Replace unused key
+vim.keymap.set("n", "K", "k", opts)
 
-    -- Terminal
-    { 't', '<Space><ESC>', '<C-\\><C-n>' },
+-- Cursor move
+vim.keymap.set("n", "gh", "0", { noremap = true, silent = true, desc = "Goto line start" })
+vim.keymap.set("n", "gl", "$", { noremap = true, silent = true, desc = "Goto line end" })
 
-    -- Replace unused key
-    { 'n', 'K', 'k' }
-
-    -- LSP
-    -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-    -- {'n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>' },
-    -- {'n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>' },
-    -- {'n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>' },
-    -- {'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', },
-    -- {'n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>' },
-    -- {'n', 'gh', ':lua vim.diagnostic.open_float()\n' },
-  }
-end
-
-function M.setup()
-  local keymaps = M.keymaps()
-  M.load(keymaps)
-end
-
-M.setup()
+-- Move cursor between wrap linebreak
+local linebreak_opts = { expr = true, silent = true }
+vim.keymap.set("n", "j", "v:count == 0 ? \"gj\" : \"j\"", linebreak_opts)
+vim.keymap.set("n", "k", "v:count == 0 ? \"gk\" : \"k\"", linebreak_opts)
+vim.keymap.set("v", "j", "v:count == 0 ? \"gj\" : \"j\"", linebreak_opts)
+vim.keymap.set("v", "k", "v:count == 0 ? \"gk\" : \"k\"", linebreak_opts)
+vim.keymap.set("n", "<Down>", "v:count == 0 ? \"gj\" : \"j\"", linebreak_opts)
+vim.keymap.set("n", "<Up>", "v:count == 0 ? \"gk\" : \"k\"", linebreak_opts)
+vim.keymap.set("i", "<Up>", "v:count == 0 ? \"<C-o>gk\" : \"k\"", linebreak_opts)
+vim.keymap.set("i", "<Down>", "v:count == 0 ? \"<C-o>gj\" : \"j\"", linebreak_opts)
+vim.keymap.set("v", "<Up>", "v:count == 0 ? \"gk\" : \"k\"", linebreak_opts)
+vim.keymap.set("v", "<Down>", "v:count == 0 ? \"gj\" : \"j\"", linebreak_opts)
