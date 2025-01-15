@@ -5,7 +5,14 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     {
       "antosha417/nvim-lsp-file-operations",
-      config = true
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-tree.lua",
+      },
+      -- commit = "9bb09acea495e6bc2325a89722e522c13d2ed40b",
+      config = function()
+        require("lsp-file-operations").setup()
+      end,
     },
     {
       "lvimuser/lsp-inlayhints.nvim",
@@ -52,8 +59,8 @@ return {
     -- local bufopts = { noremap = true, silent = true }
 
     ---@diagnostic disable-next-line: unused-local
-    local on_attach = function(client, buffer)
-      local opts = { noremap = true, silent = true, buffer = buffer }
+    local on_attach = function(client, bufnr)
+      local opts = { noremap = true, silent = true, buffer = bufnr }
 
       -- -- set keybinds
       -- opts.desc = "Show LSP references"
@@ -67,6 +74,9 @@ return {
 
       opts.desc = "Show LSP implementations"
       vim.keymap.set("n", "gi", ":Telescope lsp_implementations<CR>", opts) -- show lsp implementations
+
+      opts.desc = "Show LSP references"
+      vim.keymap.set("n", "gr", ":Telescope lsp_references<CR>", opts) -- show lsp implementations
 
       -- opts.desc = "Show LSP type definitions"
       -- keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
@@ -120,22 +130,32 @@ return {
       vim.fn.sign_define(hl_sign, { text = opts.icon, texthl = hl, linehl = "", numhl = "" })
     end
 
-    -- configure golang server
-    lspconfig["gopls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+    local lsp_servers = {
+      "astro",
+      "crystalline",
+      "cssls",
+      "biome",
+      "gleam",
+      "gopls",
+      "html",
+      "jsonls",
+      -- "kotlin_language_server",
+      -- "lexical",
+      "ocamllsp",
+      "pyright",
+      "rust_analyzer",
+      -- "tailwindcss",
+      "taplo",
+      "tsp_server",
+      "yamlls",
+    }
 
-    -- configure css server
-    lspconfig["cssls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    lspconfig["eslint"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+    for _, server in ipairs(lsp_servers) do
+      lspconfig[server].setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
+    end
 
     lspconfig["elixirls"].setup({
       capabilities = capabilities,
@@ -143,26 +163,47 @@ return {
       cmd = { "elixir-ls" },
     })
 
-    -- configure html server
-    lspconfig["html"].setup({
+
+    -- configure tailwindcss server
+    lspconfig["tailwindcss"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      filetypes = { "astro", "astro-markdown", "html", "javascript", "javascriptreact" },
     })
 
-    -- configure json server
-    lspconfig["jsonls"].setup({
+    lspconfig["eslint"].setup({
+      capabilities = capabilities,
+      -- on_attach = on_attach,
+      on_attach = function(_, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          buffer = bufnr,
+          command = "EslintFixAll",
+        })
+      end,
+    })
+
+    -- configure zig server
+    lspconfig["zls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      settings = {
+        zig = {
+          inlayHints = {
+            includeInlayFunctionParameterTypeHints = false,
+          },
+        },
+      },
     })
 
-    -- configure markdown server
-    lspconfig["marksman"].setup({
+    -- configure typescript server with denols
+    lspconfig["denols"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      root_dir = lspconfig.util.root_pattern("deno.json", "deno.json")
     })
 
-    -- configure typescript server with plugin
-    lspconfig["tsserver"].setup({
+    -- configure typescript server with ts_ls
+    lspconfig["ts_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
       settings = {
@@ -189,6 +230,8 @@ return {
           },
         },
       },
+      root_dir = lspconfig.util.root_pattern("package.json"),
+      single_file_support = false,
     })
 
     -- configure svelte server
@@ -206,44 +249,6 @@ return {
           end,
         })
       end,
-    })
-
-    -- configure graphql language server
-    lspconfig["graphql"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-    })
-
-    -- configure emmet language server
-    lspconfig["emmet_ls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
-    })
-
-    -- configure python server
-    lspconfig["pyright"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    -- configure rust server
-    lspconfig["rust_analyzer"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    -- -- configure tailwindcss server
-    -- lspconfig["tailwindcss"].setup({
-    --   capabilities = capabilities,
-    --   on_attach = on_attach,
-    -- })
-
-    -- configure zig server
-    lspconfig["zls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
     })
 
     -- configure lua server (with special settings)

@@ -33,7 +33,6 @@ return {
         "cssls",
         "elixirls",
         "emmet_ls",
-        "gopls",
         "graphql",
         "html",
         "lua_ls",
@@ -41,7 +40,7 @@ return {
         "rust_analyzer",
         "svelte",
         "tailwindcss",
-        "tsserver",
+        "ts_ls",
         "zls",
       },
       -- auto-install configured servers (with lspconfig)
