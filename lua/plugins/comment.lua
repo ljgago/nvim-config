@@ -6,6 +6,7 @@ return {
   init = function()
     local ft = require("Comment.ft")
     ft.set("hurl", { "#%s" })
+    ft.set("typespec", { "//%s" })
   end,
   config = true
 }
