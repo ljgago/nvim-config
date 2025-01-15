@@ -8,17 +8,18 @@ return {
     "hrsh7th/cmp-vsnip",
     "tamago324/cmp-zsh",
     -- Snippets
-    "rafamadriz/friendly-snippets",
     "L3MON4D3/LuaSnip",
+    "rafamadriz/friendly-snippets",
     "saadparwaiz1/cmp_luasnip",
-    "hrsh7th/vim-vsnip",
+    -- "hrsh7th/vim-vsnip",
     "hrsh7th/cmp-cmdline",
   },
-  event = "VeryLazy",
+  -- event = "VeryLazy",
   config = function()
     local cmp = require("cmp")
 
     require("luasnip.loaders.from_vscode").lazy_load({})
+    -- require("luasnip.loaders.from_snipmate").lazy_load({})
     -- require("luasnip").filetype_extend("dart", { "flutter" })
 
     local kind_icons = {
