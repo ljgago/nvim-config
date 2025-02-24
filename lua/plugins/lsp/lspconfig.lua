@@ -131,9 +131,10 @@ return {
     end
 
     local lsp_servers = {
+      "ada_ls",
       "astro",
       "crystalline",
-      "cssls",
+      -- "cssls",
       "biome",
       "gleam",
       "gopls",
@@ -147,6 +148,8 @@ return {
       -- "tailwindcss",
       "taplo",
       "tsp_server",
+      "tinymist",
+      "volar",
       "yamlls",
     }
 
@@ -168,7 +171,29 @@ return {
     lspconfig["tailwindcss"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
-      filetypes = { "astro", "astro-markdown", "html", "javascript", "javascriptreact" },
+      settings = {
+        tailwindCSS = {
+          classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
+          includeLanguages = {
+            heex = "html-eex",
+            elixir = "html-eex",
+            eelixir = "html-eex",
+            eruby = "erb",
+            htmlangular = "html",
+            templ = "html"
+          },
+          lint = {
+            cssConflict = "warning",
+            invalidApply = "error",
+            invalidConfigPath = "error",
+            invalidScreen = "error",
+            invalidTailwindDirective = "error",
+            invalidVariant = "error",
+            recommendedVariantOrder = "warning"
+          },
+          validate = true
+        }
+      }
     })
 
     lspconfig["eslint"].setup({
@@ -234,22 +259,22 @@ return {
       single_file_support = false,
     })
 
-    -- configure svelte server
-    lspconfig["svelte"].setup({
-      capabilities = capabilities,
-      on_attach = function(client, bufnr)
-        on_attach(client, bufnr)
-
-        vim.api.nvim_create_autocmd("BufWritePost", {
-          pattern = { "*.js", "*.ts" },
-          callback = function(ctx)
-            if client.name == "svelte" then
-              client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
-            end
-          end,
-        })
-      end,
-    })
+    -- -- configure svelte server
+    -- lspconfig["svelte"].setup({
+    --   capabilities = capabilities,
+    --   on_attach = function(client, bufnr)
+    --     on_attach(client, bufnr)
+    --
+    --     vim.api.nvim_create_autocmd("BufWritePost", {
+    --       pattern = { "*.js", "*.ts" },
+    --       callback = function(ctx)
+    --         if client.name == "svelte" then
+    --           client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+    --         end
+    --       end,
+    --     })
+    --   end,
+    -- })
 
     -- configure lua server (with special settings)
     lspconfig["lua_ls"].setup({
