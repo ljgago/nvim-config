@@ -1,9 +1,8 @@
 return {
-  "williamboman/mason.nvim",
+  "mason-org/mason.nvim",
   dependencies = {
-    "williamboman/mason-lspconfig.nvim",
-    "jose-elias-alvarez/null-ls.nvim",
-    "jayp0521/mason-null-ls.nvim",
+    "mason-org/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
   },
   config = function()
     -- import mason
@@ -11,9 +10,6 @@ return {
 
     -- import mason-lspconfig
     local mason_lspconfig = require("mason-lspconfig")
-
-    -- import mason-null-ls
-    local mason_null_ls = require("mason-null-ls")
 
     -- enable mason and configure icons
     mason.setup({
@@ -28,34 +24,25 @@ return {
     })
 
     mason_lspconfig.setup({
-      -- list of servers for mason to install
       ensure_installed = {
+        "biome",
         "cssls",
         "elixirls",
-        "emmet_ls",
+        -- "emmet_ls",
         "graphql",
         "html",
+        "jsonls",
         "lua_ls",
         "pyright",
         "rust_analyzer",
         "svelte",
         "tailwindcss",
+        "taplo",
         "ts_ls",
+        "tsp_server",
+        "yamlls",
         "zls",
       },
-      -- auto-install configured servers (with lspconfig)
-      automatic_installation = true, -- not the same as ensure_installed
-    })
-
-    mason_null_ls.setup({
-      -- list of formatters & linters for mason to install
-      ensure_installed = {
-        "prettier", -- ts/js formatter
-        "stylua",   -- lua formatter
-        "eslint_d", -- ts/js linter
-      },
-      -- auto-install configured servers (with lspconfig)
-      automatic_installation = true,
     })
   end,
 }
