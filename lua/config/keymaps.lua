@@ -45,14 +45,14 @@ vim.keymap.set("n", "gh", "0", { noremap = true, silent = true, desc = "Goto lin
 vim.keymap.set("n", "gl", "$", { noremap = true, silent = true, desc = "Goto line end" })
 
 -- Move cursor between wrap linebreak
-local linebreak_opts = { expr = true, silent = true }
-vim.keymap.set("n", "j", "v:count == 0 ? \"gj\" : \"j\"", linebreak_opts)
-vim.keymap.set("n", "k", "v:count == 0 ? \"gk\" : \"k\"", linebreak_opts)
-vim.keymap.set("v", "j", "v:count == 0 ? \"gj\" : \"j\"", linebreak_opts)
-vim.keymap.set("v", "k", "v:count == 0 ? \"gk\" : \"k\"", linebreak_opts)
-vim.keymap.set("n", "<Down>", "v:count == 0 ? \"gj\" : \"j\"", linebreak_opts)
-vim.keymap.set("n", "<Up>", "v:count == 0 ? \"gk\" : \"k\"", linebreak_opts)
-vim.keymap.set("i", "<Up>", "v:count == 0 ? \"<C-o>gk\" : \"k\"", linebreak_opts)
-vim.keymap.set("i", "<Down>", "v:count == 0 ? \"<C-o>gj\" : \"j\"", linebreak_opts)
-vim.keymap.set("v", "<Up>", "v:count == 0 ? \"gk\" : \"k\"", linebreak_opts)
-vim.keymap.set("v", "<Down>", "v:count == 0 ? \"gj\" : \"j\"", linebreak_opts)
+-- local linebreak_opts = { expr = true, silent = true }
+-- vim.keymap.set("n", "j", "v:count == 0 ? \"gj\" : \"j\"", linebreak_opts)
+-- vim.keymap.set("n", "k", "v:count == 0 ? \"gk\" : \"k\"", linebreak_opts)
+-- vim.keymap.set("v", "j", "v:count == 0 ? \"gj\" : \"j\"", linebreak_opts)
+-- vim.keymap.set("v", "k", "v:count == 0 ? \"gk\" : \"k\"", linebreak_opts)
+-- vim.keymap.set("n", "<Down>", "v:count == 0 ? \"gj\" : \"j\"", linebreak_opts)
+-- vim.keymap.set("n", "<Up>", "v:count == 0 ? \"gk\" : \"k\"", linebreak_opts)
+-- vim.keymap.set("i", "<Up>", "v:count == 0 ? \"<C-o>gk\" : \"k\"", linebreak_opts)
+-- vim.keymap.set("i", "<Down>", "v:count == 0 ? \"<C-o>gj\" : \"j\"", linebreak_opts)
+-- vim.keymap.set("v", "<Up>", "v:count == 0 ? \"gk\" : \"k\"", linebreak_opts)
+-- vim.keymap.set("v", "<Down>", "v:count == 0 ? \"gj\" : \"j\"", linebreak_opts)
