@@ -7,6 +7,7 @@ return {
     local ft = require("Comment.ft")
     ft.set("hurl", { "#%s" })
     ft.set("typespec", { "//%s" })
+    ft.set("templ", { "//%s", "<!--%s-->" })
   end,
   config = true
 }
