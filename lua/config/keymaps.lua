@@ -1,5 +1,11 @@
 local opts = { noremap = true, silent = true }
 
+-- Copy/paste with system clipboard
+vim.keymap.set({ "n", "x" }, "gy", '"+y', { desc = 'Copy to system clipboard' })
+vim.keymap.set({ "n", "v" }, "gp", '"+p', { desc = 'Paste from system clipboard' })
+-- Paste in Visual with `P` to not copy selected text (`:h v_P`)
+vim.keymap.set({ "n", "v", "x" }, "gP", '"+P', { desc = 'Paste from system clipboard' })
+
 -- Move line in Normal mode
 vim.keymap.set("n", "<C-Up>", "<Cmd>m -2<CR>", opts)
 vim.keymap.set("n", "<C-Down>", "<Cmd>m +1<CR>", opts)
