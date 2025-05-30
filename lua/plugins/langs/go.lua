@@ -14,7 +14,8 @@ return {
       tag_transform = "snakecase",
       tag_options = "json=omitempty",
       lsp_codelens = false,
+      diagnostic = false,
     })
   end,
-  -- build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+  -- build = ":lua require("go.install").update_all_sync()" -- if you need to install/update all binaries
 }

@@ -7,17 +7,17 @@ return {
     local colors = require("plugins.colorscheme").colors()
 
     -- nvim 0.6.x
-    vim.cmd('hi GitSignsAdd guifg='..colors.green..' guibg='..colors.bg)
-    vim.cmd('hi GitSignsChange guifg='..colors.orange..' guibg='..colors.bg)
-    vim.cmd('hi GitSignsDelete guifg='..colors.red..' guibg='..colors.bg)
-    vim.cmd('hi GitSignsAddNr guifg='..colors.green..' guibg='..colors.bg)
-    vim.cmd('hi GitSignsChangeNr guifg='..colors.orange..' guibg='..colors.bg)
-    vim.cmd('hi GitSignsDeleteNr guifg='..colors.red..' guibg='..colors.bg)
-    vim.cmd('hi GitSignsAddLn guifg=#1e2127 guibg='..colors.green)
-    vim.cmd('hi GitSignsChangeLn guifg=#1e2127 guibg='..colors.orange)
-    vim.cmd('hi GitSignsDeleteLn guifg=#1e2127 guibg='..colors.red)
-    vim.cmd('hi GitSignsDeleteLn guifg=#1e2127 guibg='..colors.red)
-    vim.cmd('hi clear SignColumn')
+    vim.cmd("hi GitSignsAdd guifg="..colors.green.." guibg="..colors.bg)
+    vim.cmd("hi GitSignsChange guifg="..colors.orange.." guibg="..colors.bg)
+    vim.cmd("hi GitSignsDelete guifg="..colors.red.." guibg="..colors.bg)
+    vim.cmd("hi GitSignsAddNr guifg="..colors.green.." guibg="..colors.bg)
+    vim.cmd("hi GitSignsChangeNr guifg="..colors.orange.." guibg="..colors.bg)
+    vim.cmd("hi GitSignsDeleteNr guifg="..colors.red.." guibg="..colors.bg)
+    vim.cmd("hi GitSignsAddLn guifg=#1e2127 guibg="..colors.green)
+    vim.cmd("hi GitSignsChangeLn guifg=#1e2127 guibg="..colors.orange)
+    vim.cmd("hi GitSignsDeleteLn guifg=#1e2127 guibg="..colors.red)
+    vim.cmd("hi GitSignsDeleteLn guifg=#1e2127 guibg="..colors.red)
+    vim.cmd("hi clear SignColumn")
 
     local gitsigns = require("gitsigns")
     gitsigns.setup({
@@ -51,7 +51,7 @@ return {
       current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
       current_line_blame_opts = {
         virt_text = true,
-        virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+        virt_text_pos = "eol", -- "eol" | "overlay" | "right_align"
         delay = 1000,
         ignore_whitespace = false,
       },

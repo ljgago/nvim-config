@@ -3,7 +3,7 @@ return {
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
   },
-  ft = 'hurl',
+  ft = "hurl",
   lazy = false,
   priority = 2000,
   config = function()

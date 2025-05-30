@@ -1,12 +1,12 @@
 return {
   "nvim-telescope/telescope.nvim",
-  tag = "0.1.2",
+  -- tag = "0.1.8",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-ui-select.nvim",
   },
   config = function()
-    require('telescope').setup({
+    require("telescope").setup({
       defaults = {
         mappings = {
           i = {
@@ -26,7 +26,8 @@ return {
           sort_mru = true,
         },
         find_files = {
-          find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
+          find_command = { "rg", "--ignore", "--files", "--hidden", "--column", "-g", "!.git/" },
+          -- find_command = { "fd", "--type", "f", "--hidden", "--exclude", "*.git" },
         },
       },
       extensions = {

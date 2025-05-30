@@ -11,7 +11,7 @@ return {
         ["--layout"] = "default",
       },
       files = {
-        prompt = 'Files❯ ',
+        prompt = "Files❯ ",
         cwd_prompt = false
       },
     })
