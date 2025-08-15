@@ -72,6 +72,14 @@ return {
           quit_on_open = true,
         }
       }
+      -- renderer = {
+      --   icons = {
+      --     show = {
+      --       folder = false,
+      --       file = false
+      --     }
+      --   }
+      -- }
     })
   end,
 }

@@ -40,6 +40,12 @@ vim.keymap.set("t", "<ESC>", "<C-\\><C-n>", opts)
 -- Replace unused key
 vim.keymap.set("n", "K", "k", opts)
 
+-- Helix
+vim.keymap.set("n", "x", "V", opts)
+vim.keymap.set("v", "x", "j", opts)
+vim.keymap.set("n", "X", "V", opts)
+vim.keymap.set("v", "X", "j", opts)
+
 -- Cursor move
 vim.keymap.set("n", "gh", "0", { noremap = true, silent = true, desc = "Goto line start" })
 vim.keymap.set("n", "gl", "$", { noremap = true, silent = true, desc = "Goto line end" })

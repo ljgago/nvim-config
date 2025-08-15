@@ -1,6 +1,8 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   priority = 3000,
+  lazy = false,
+  branch = "master",
   config = function()
     require("nvim-treesitter.configs").setup({
       highlight = {

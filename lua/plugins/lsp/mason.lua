@@ -37,7 +37,6 @@ return {
         "rust_analyzer",
         "svelte",
         "tailwindcss",
-        "taplo",
         "ts_ls",
         "tsp_server",
         "yamlls",

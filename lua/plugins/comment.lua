@@ -9,5 +9,10 @@ return {
     ft.set("typespec", { "//%s" })
     ft.set("templ", { "//%s", "<!--%s-->" })
   end,
-  config = true
+  config = function()
+    require("Comment").setup({
+      toggler = { line = "<C-c>" },
+      opleader = { line = "<C-c>" },
+    })
+  end
 }

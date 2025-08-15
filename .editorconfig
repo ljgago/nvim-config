@@ -12,9 +12,13 @@ trim_trailing_whitespace = true
 
 [Makefile]
 indent_style = tab
-indent_size = 8
+indent_size = 4
 
-# Identation for Dart files
+[nginx.conf]
+indent_style = space
+indent_size = 4
+
+# Indentation for Dart files
 [*.dart]
 indent_style = space
 indent_size = 2
@@ -30,13 +34,18 @@ indent_style = space
 indent_size = 2
 
 # Indentation for Go files
-[*.go]
+[*.{go,templ}]
 indent_style = tab
-indent_size = 8
+indent_size = 4
 
 [*.lua]
 indent_style = space
 indent_size = 2
+
+#Indentation for JSON files
+[*.java]
+indent_style = space
+indent_size = 4
 
 #Indentation for JSON files
 [*.json]
@@ -52,31 +61,51 @@ indent_size = 4
 indent_style = space
 indent_size = 2
 
+# Indentation for Kotlin files
+[*.kt]
+indent_style = space
+indent_size = 4
+
 # Indentation for Markdown files
 [*.{markdown,md}]
 indent_style = space
 indent_size = 2
 
 # Indentation for Rust files
-[*.rs]
+[*.{rs,slint}]
 indent_style = space
-ident_size = 4
+indent_size = 4
+
+# Indentation for PHP
+[*.php]
+indent_style = space
+indent_size = 4
 
 # Indentation for Proto files
 [*.proto]
 indent_style = space
 indent_size = 2
 
-# Identation for vue files
+# Indentation for vue files
 [*.vue]
 indent_style = space
 indent_size = 2
+
+# Indentation for typst files
+[*.typ]
+indent_style = space
+indent_size = 2
+
+# Indentation for xml files
+[*.xml]
+indent_style = space
+indent_size = 4
 
 [*.{toml,yaml}]
 indent_style = space
 indent_size = 2
 
-# Identation for Cobol files
+# Indentation for Cobol files
 [*.cbl]
 indent_style = space
 max_line_length = 80

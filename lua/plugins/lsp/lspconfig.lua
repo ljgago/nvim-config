@@ -62,32 +62,32 @@ return {
       filetypes = { "astro", "javascript", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact", "vue" }
     })
 
-    vim.lsp.config("biome", {
-      on_attach = on_attach,
-      settings = {
-        tailwindCSS = {
-          classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
-          includeLanguages = {
-            heex = "html-eex",
-            elixir = "html-eex",
-            eelixir = "html-eex",
-            eruby = "erb",
-            htmlangular = "html",
-            svelte = "svelte",
-            templ = "html"
-          },
-          lint = {
-            cssConflict = "warning",
-            invalidApply = "error",
-            invalidConfigPath = "error",
-            invalidScreen = "error",
-            invalidTailwindDirective = "error",
-            invalidVariant = "error",
-            recommendedVariantOrder = "warning"
-          },
-          validate = true
-        }
-      }
-    })
+    -- vim.lsp.config("tailwindcss", {
+    --   on_attach = on_attach,
+    --   settings = {
+    --     tailwindCSS = {
+    --       classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
+    --       includeLanguages = {
+    --         heex = "html-eex",
+    --         elixir = "html-eex",
+    --         eelixir = "html-eex",
+    --         eruby = "erb",
+    --         htmlangular = "html",
+    --         svelte = "svelte",
+    --         templ = "html"
+    --       },
+    --       lint = {
+    --         cssConflict = "warning",
+    --         invalidApply = "error",
+    --         invalidConfigPath = "error",
+    --         invalidScreen = "error",
+    --         invalidTailwindDirective = "error",
+    --         invalidVariant = "error",
+    --         recommendedVariantOrder = "warning"
+    --       },
+    --       validate = true
+    --     }
+    --   }
+    -- })
   end,
 }

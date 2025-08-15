@@ -1,11 +1,13 @@
-vim.g.mapleader   = " "
-vim.o.title       = true  -- show the file name as title
-vim.wo.number     = true  -- show line numbers.
-vim.o.mouse       = "a"   -- enable mouse.
-vim.o.history     = 1000  -- increase history size.
-vim.wo.wrap       = false -- do not divide the line if it is long.
-vim.wo.cursorline = true  -- show the current line.
-vim.o.synmaxcol   = 160   -- show syntax highlight until column number.
+vim.g.mapleader    = " "
+vim.o.title        = true  -- show the file name as title
+vim.wo.number      = true  -- show line numbers.
+vim.o.mouse        = "a"   -- enable mouse.
+vim.o.history      = 1000  -- increase history size.
+vim.wo.cursorline  = true  -- show the current line.
+vim.o.synmaxcol    = 160   -- show syntax highlight until column number.
+vim.wo.wrap        = true  -- divide the line if it is long.
+vim.wo.breakindent = true  -- wrapped lines indent according to the original line's indentation level
+vim.wo.linebreak   = true  -- break lines at appropriate points within words, avoiding the splitting of words
 
 -- Default Identation
 vim.o.tabstop     = 2    -- tabs with 2 spaces.
@@ -63,3 +65,9 @@ vim.g.terminal_color_1 = "#fb4934"
 vim.g.terminal_color_2 = "#fb4934"
 vim.g.terminal_color_3 = "#fb4934"
 vim.g.terminal_color_4 = "#fb4934"
+
+vim.api.nvim_set_hl(0, "InsertCursor", { bg = "#83a598" })
+vim.api.nvim_set_hl(0, "VisualCursor", { bg = "#fe8019" })
+vim.o.guicursor = "i-ci:block-InsertCursor,v-ve:block-VisualCursor"
+
+vim.g.editorconfig = true
