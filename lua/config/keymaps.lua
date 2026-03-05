@@ -43,12 +43,20 @@ vim.keymap.set("n", "K", "k", opts)
 -- Helix
 vim.keymap.set("n", "x", "V", opts)
 vim.keymap.set("v", "x", "j", opts)
-vim.keymap.set("n", "X", "V", opts)
-vim.keymap.set("v", "X", "j", opts)
+-- vim.keymap.set("n", "X", "V", opts)
+-- vim.keymap.set("v", "X", "j", opts)
 
 -- Cursor move
 vim.keymap.set("n", "gh", "0", { noremap = true, silent = true, desc = "Goto line start" })
 vim.keymap.set("n", "gl", "$", { noremap = true, silent = true, desc = "Goto line end" })
+vim.keymap.set("n", "gs", "^", { noremap = true, silent = true, desc = "Goto first non-blank in line" })
+
+-- Remove default lsp keymaps
+vim.keymap.del("n", "grn")
+vim.keymap.del("n", "gra")
+vim.keymap.del("n", "grr")
+vim.keymap.del("n", "gri")
+vim.keymap.del("n", "grt")
 
 -- Move cursor between wrap linebreak
 -- local linebreak_opts = { expr = true, silent = true }
