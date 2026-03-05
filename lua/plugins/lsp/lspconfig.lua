@@ -1,8 +1,8 @@
 return {
   "neovim/nvim-lspconfig",
-  event = { "BufReadPre", "BufNewFile" },
+  -- event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    "saghen/blink.cmp"
+    "saghen/blink.cmp",
   },
   config = function()
     vim.diagnostic.config({
@@ -37,6 +37,8 @@ return {
       opts.desc = "Show LSP references"
       vim.keymap.set("n", "gr", ":Telescope lsp_references<CR>", opts) -- show lsp implementations
 
+      vim.lsp.inlay_hint.enable(false)
+
       -- if vim.bo[bufnr].filetype == "svelte" then
       --   client.server_capabilities.documentFormattingProvider = false
       --   client.server_capabilities.documentRangeFormattingProvider = false
@@ -44,22 +46,22 @@ return {
     end
 
     vim.lsp.config("*", {
-      on_attach = on_attach
+      on_attach = on_attach,
     })
 
     vim.lsp.config("html", {
       on_attach = on_attach,
-      filetypes = { "html", } -- Only enable for specific types
+      filetypes = { "html" }, -- Only enable for specific types
     })
 
     vim.lsp.config("ts_ls", {
       on_attach = on_attach,
-      filetypes = { "typescript", "typescriptreact", "javascriptreact" } -- Only enable for specific types
+      filetypes = { "typescript", "typescriptreact", "javascriptreact" }, -- Only enable for specific types
     })
 
     vim.lsp.config("biome", {
       on_attach = on_attach,
-      filetypes = { "astro", "javascript", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact", "vue" }
+      filetypes = { "astro", "javascript", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact", "vue" },
     })
 
     -- vim.lsp.config("tailwindcss", {
