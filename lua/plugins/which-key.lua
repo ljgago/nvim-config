@@ -31,6 +31,7 @@ return {
 
       { "<leader>y",        '"+y',                                                               desc = "Copy to system clipboard",          mode = { "n", "x" }, nowait = true, remap = false, silent = true },
       { "<leader>p",        '"+p',                                                               desc = "Paste from system clipboard",       mode = { "n", "v" }, nowait = true, remap = false },
+      { "<leader>P",        '"+p',                                                               desc = "Paste from system clipboard",       mode = { "n", "v" }, nowait = true, remap = false },
 
       { "ga",               "<Cmd>b#<CR>",                                                       desc = "Go last accessed file",             mode = { "n", "v" }, nowait = true, remap = false },
       { "gd",               ":Telescope lsp_definitions<CR>",                                    desc = "Go to definitions",                 mode = { "n" } }, -- show lsp implementations

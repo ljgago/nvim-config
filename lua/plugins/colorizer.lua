@@ -1,12 +1,17 @@
 return {
-  "NvChad/nvim-colorizer.lua",
+  "catgoose/nvim-colorizer.lua",
   event = "VeryLazy",
   config = function()
-    require("colorizer").setup {
-      user_default_options = {
-        rgb_fn = true, -- CSS rgb() and rgba() functions
-        names = false,
+    require("colorizer").setup({
+      options = {
+        parsers = {
+          css = true, -- preset: enables names, hex, rgb, hsl, oklch
+          css_fn = true, -- preset: enables rgb, hsl, oklch
+          names = {
+            enable = false,
+          },
+        },
       },
-    }
+    })
   end,
 }

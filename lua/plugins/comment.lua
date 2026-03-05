@@ -14,5 +14,5 @@ return {
       toggler = { line = "<C-c>" },
       opleader = { line = "<C-c>" },
     })
-  end
+  end,
 }

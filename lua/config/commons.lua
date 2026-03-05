@@ -66,8 +66,5 @@ vim.g.terminal_color_2 = "#fb4934"
 vim.g.terminal_color_3 = "#fb4934"
 vim.g.terminal_color_4 = "#fb4934"
 
-vim.api.nvim_set_hl(0, "InsertCursor", { bg = "#83a598" })
-vim.api.nvim_set_hl(0, "VisualCursor", { bg = "#fe8019" })
-vim.o.guicursor = "i-ci:block-InsertCursor,v-ve:block-VisualCursor"
-
 vim.g.editorconfig = true
+vim.g.lsp_no_default_keymaps = true

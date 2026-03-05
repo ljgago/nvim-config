@@ -2,7 +2,7 @@ return {
   "ibhagwan/fzf-lua",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
-    "junegunn/fzf"
+    "junegunn/fzf",
   },
   config = function()
     require("fzf-lua").setup({
@@ -12,7 +12,7 @@ return {
       },
       files = {
         prompt = "Files❯ ",
-        cwd_prompt = false
+        cwd_prompt = false,
       },
     })
   end,

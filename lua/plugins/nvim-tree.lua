@@ -1,22 +1,22 @@
 return {
   "nvim-tree/nvim-tree.lua",
   dependencies = {
-    "nvim-tree/nvim-web-devicons"
+    "nvim-tree/nvim-web-devicons",
   },
   config = function()
     local nvimtree = require("nvim-tree")
 
     nvimtree.setup({
-      select_prompts       = true,
-      disable_netrw        = false,
-      hijack_netrw         = true,
+      select_prompts = true,
+      disable_netrw = false,
+      hijack_netrw = true,
       auto_reload_on_write = true,
-      open_on_tab          = false,
-      hijack_cursor        = false,
-      update_cwd           = false,
+      open_on_tab = false,
+      hijack_cursor = false,
+      update_cwd = false,
       hijack_unnamed_buffer_when_opening = false,
       reload_on_bufenter = false,
-      hijack_directories   = {
+      hijack_directories = {
         enable = true,
         auto_open = true,
       },
@@ -28,20 +28,20 @@ return {
           info = "",
           warning = "",
           error = "",
-        }
+        },
       },
       update_focused_file = {
-        enable      = true,
-        update_cwd  = false,
-        ignore_list = {}
+        enable = true,
+        update_cwd = false,
+        ignore_list = {},
       },
       system_open = {
-        cmd  = nil,
-        args = {}
+        cmd = nil,
+        args = {},
       },
       filters = {
         dotfiles = false,
-        custom = {}
+        custom = {},
       },
       git = {
         enable = true,
@@ -51,18 +51,18 @@ return {
       view = {
         width = 30,
         -- hide_root_folder = false,
-        side = 'left',
+        side = "left",
         -- mappings = {
         --   custom_only = false,
         --   list = {}
         -- },
         number = false,
         relativenumber = false,
-        signcolumn = "yes"
+        signcolumn = "yes",
       },
       trash = {
         cmd = "trash",
-        require_confirm = true
+        require_confirm = true,
       },
       actions = {
         change_dir = {
@@ -70,8 +70,8 @@ return {
         },
         open_file = {
           quit_on_open = true,
-        }
-      }
+        },
+      },
       -- renderer = {
       --   icons = {
       --     show = {
