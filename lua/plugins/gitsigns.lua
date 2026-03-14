@@ -23,10 +23,12 @@ return {
     gitsigns.setup({
       signs = {
         add = {
-          text = "▎",
+          text = "+",
+          -- text = "▎",
         },
         change = {
-          text = "▎",
+          text = "~",
+          -- text = "▎",
         },
         delete = {
           -- text = "▎",
@@ -35,7 +37,8 @@ return {
           -- text = "▎",
         },
         changedelete = {
-          text = "▎",
+          text = "-",
+          -- text = "▎",
         },
       },
       numhl = false,
