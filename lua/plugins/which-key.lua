@@ -133,6 +133,9 @@ return {
       { "<leader>ws",       ":split<CR>",                                                        desc = "Split window",                      nowait = true,       remap = false },
       { "<leader>wv",       ":vsplit<CR>",                                                       desc = "Vertical split window",             nowait = true,       remap = false },
       { "<leader>ww",       "<C-w><C-w>",                                                        desc = "Switch window",                     nowait = true,       remap = false },
+
+      { "<leader>m",        group = "Markdown",                                                                                              nowait = true,       remap = false },
+      { "<leader>mm",       ":RenderMarkdown toggle<CR>",                                        desc = "Toggle render markdown",            nowait = true,       remap = false },
     }
   },
 
