@@ -54,7 +54,7 @@ return {
     vim.api.nvim_set_hl(0, "VisualCursor", { bg = "#e67e80" })
     vim.api.nvim_set_hl(0, "Visual", { bg = "#475258" })
 
-    vim.o.guicursor = "n:block-NormalCursor,i-ci:block-InsertCursor,v-ve:block-VisualCursor"
+    vim.o.guicursor = "n:block-NormalCursor,i-ci:ver25-InsertCursor,v-ve:block-VisualCursor"
   end,
   colors = function()
     return {
