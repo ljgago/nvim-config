@@ -1,22 +1,3 @@
-
--- Lsp client
-local function lsp_client()
-  -- local msg = "No Active Lsp"
-  local msg = ""
-  local buf_ft = vim.api.nvim_get_option_value("filetype", {})
-  local clients = vim.lsp.get_clients()
-  if next(clients) == nil then
-    return msg
-  end
-  for _, client in ipairs(clients) do
-    local filetypes = client.config.filetypes
-    if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-      return client.name
-    end
-  end
-  return msg
-end
-
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = {
@@ -24,6 +5,35 @@ return {
   },
   config = function()
     local colors = require("plugins.colorscheme").colors()
+
+    -- Lsp client
+    local lsp_client = {
+      function()
+        -- local msg = "No Active Lsp"
+        local msg = ""
+        local buf_ft = vim.api.nvim_get_option_value("filetype", {})
+        local clients = vim.lsp.get_clients()
+        if next(clients) == nil then
+          return msg
+        end
+        for _, client in ipairs(clients) do
+          local filetypes = client.config.filetypes
+          if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+            return client.name
+          end
+        end
+        return msg
+      end,
+      color = { fg = colors.yellow, gui = "bold" },
+    }
+
+    local project_root = {
+      function()
+        return vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+      end,
+      color = { fg = colors.green, gui = "bold" }
+      -- icon = "📁",
+    }
 
     require("lualine").setup({
       options = {
@@ -40,7 +50,7 @@ return {
       sections = {
         lualine_a = { { "mode", upper = false } },
         lualine_b = { { "branch", icon = "" }, "db_ui#statusline" },
-        lualine_c = { { "filename", file_status = true, path = 1, use_mode_colors = false, } },
+        lualine_c = { project_root, { "filename", file_status = true, path = 1, use_mode_colors = false, } },
         lualine_x = {
           {
             "diagnostics",
@@ -54,7 +64,7 @@ return {
             symbols = { added = "+", modified = "~", removed = "-" },
             diff_color = {
               added = { fg = colors.green },
-              modified = { fg = colors.orange },
+              modified = { fg = colors.blue },
               removed = { fg = colors.red },
             },
           },
@@ -64,13 +74,7 @@ return {
             -- color = { fg = "ff9e64" },
           },
         },
-        lualine_y = {
-          {
-            lsp_client,
-            color = { fg = colors.yellow, gui = "bold" },
-          },
-          "filetype"
-        },
+        lualine_y = { lsp_client, "filetype" },
         lualine_z = { "location", "progress" },
       },
       winbar = {},

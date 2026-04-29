@@ -24,6 +24,10 @@ vim.keymap.set("v", "<C-Down>", ":m \'>+1<CR>gv=gv", opts)
 vim.keymap.set("x", "ga", "<Plug>(EasyAlign}", opts)
 vim.keymap.set("n", "ga", "<Plug>(EasyAlign)", opts)
 
+-- Comment
+vim.keymap.set("n", "<C-c>", "gcc", { remap = true })
+vim.keymap.set("v", "<C-c>", "gc", { remap = true })
+
 -- Increment/decrement
 vim.keymap.set("n", "+", "<C-a>", opts)
 vim.keymap.set("n", "-", "<C-x>", opts)

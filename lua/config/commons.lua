@@ -7,7 +7,7 @@ vim.wo.cursorline  = true -- show the current line.
 vim.o.synmaxcol    = 160  -- show syntax highlight until column number.
 
 -- divide the line if it is long.
-vim.wo.wrap        = true
+vim.wo.wrap        = false
 
 -- break lines at appropriate points within words, avoiding the splitting of words
 vim.wo.linebreak   = true
@@ -16,7 +16,7 @@ vim.wo.linebreak   = true
 vim.wo.breakindent = true
 
 -- Define global borders (some plugins still don't take this option in consideration)
-vim.o.winborder    = "single"
+vim.o.winborder    = "rounded"
 
 -- Default Identation
 vim.o.tabstop      = 2    -- tabs with 2 spaces.
